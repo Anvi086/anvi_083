@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Milky Way | Anvi's Portfolio</title>
+<meta name="description" content="Milky Way is a browser based musical toy for toddlers built with the Web Audio API.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="project3-style.css">
+</head>
+<body>
+<header class="nav"><div class="wrap"><div class="bar">
+  <nav class="nav-links" aria-label="Primary"><a class="nl" href="../index.html#home">Home</a><a class="nl" href="../index.html#about-me">About</a></nav>
+  <button class="sun-btn" id="theme" type="button" aria-label="Switch between light and dark mode"></button>
+  <nav class="nav-links r" aria-label="Secondary"><a class="nl" href="../index.html#projects" aria-current="page">Projects</a><a class="nl" href="../index.html#contact">Contact</a></nav>
+</div></div></header>
+<main>
+<section class="cs-hero"><div class="wrap"><div class="panel">
+  <div class="top mono"><span>Case study 03 / 04</span><span class="pill"><i></i>Interaction design</span></div>
+  <h1 class="cs-title">Milky Way</h1>
+  <p class="cs-lead">A musical galaxy for toddlers. Move near a planet and it plays.</p>
+  <dl class="cs-meta">
+    <div><dt class="mono">Role</dt><dd>Designer and developer</dd></div>
+    <div><dt class="mono">Tools</dt><dd>HTML, CSS, JavaScript, Web Audio API</dd></div>
+    <div><dt class="mono">Time</dt><dd><span class="todo">add</span></dd></div>
+    <div><dt class="mono">Context</dt><dd>COMM2751 / 2753, Assignment 2</dd></div>
+  </dl>
+</div></div></section>
+<div class="wrap">
+<section class="cs-sec rv"><div class="cs-row"><span class="mono">Concept</span><div class="cs-body">
+<h2>Music with no words.</h2>
+<p>Milky Way is a browser instrument for toddlers and other non-readers. There are no menus, labels or text. Each glowing planet is mapped to a note in a major scale, so every combination sounds fine and there is no way to get it wrong. Sound reacts to how close the mouse is, not only to clicks.</p>
+<div class="stage" id="stage" aria-label="Try it: hover over the planets"></div>
+<p class="mono" style="color:var(--dim)">Try it. Move across the planets (sound starts after your first click or tap).</p>
+</div></div></section>
+<section class="cs-sec rv"><div class="cs-row"><span class="mono">Research</span><div class="cs-body">
+<h2>What I borrowed.</h2>
+<div class="cards">
+<div class="card"><h3>Music Mouse</h3><p>Constrained, always consonant scale (Laurie Spiegel).</p></div>
+<div class="card"><h3>Plink</h3><p>Continuous, smooth pitch feedback while you hold.</p></div>
+<div class="card"><h3>Holdspace</h3><p>One simple interaction and nothing else.</p></div>
+<div class="card"><h3>Diamond Synth</h3><p>A counter-example. Its label-heavy interface is what I avoided.</p></div>
+</div>
+</div></div></section>
+<section class="cs-sec rv"><div class="cs-row"><span class="mono">Prototypes</span><div class="cs-body">
+<h2>Six prototypes, two design areas.</h2>
+<p>Mapping asks how a planet should turn into sound. Feedback asks how the screen should answer back.</p>
+<div class="cards">
+<div class="card"><h3>1. Tap a Planet</h3><p>Click a planet, hear its note.</p></div>
+<div class="card"><h3>2. Hold and Drag</h3><p>Plink-style column of planets with continuous sound.</p></div>
+<div class="card"><h3>3. Orbiting Planets</h3><p>Planets on orbit rings loop on their own. The sun is play.</p></div>
+<div class="card"><h3>4. Glow</h3><p>Planets glow brighter as you get close.</p></div>
+<div class="card"><h3>5. Ripples and Pulses</h3><p>Each note sends out a ripple.</p></div>
+<div class="card"><h3>6. Ripples Loop</h3><p>Ripples plus a looping sequencer.</p></div>
+</div>
+<div class="links-row"><a class="btn" href="#" id="live">Open the live prototypes<span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a></div>
+<p style="margin-top:14px"><span class="todo">Replace the # in the live link with your GitHub Pages URL, and add your peer testing findings</span></p>
+</div></div></section>
+<div class="cs-next rv">
+  <a class="btn ghost" href="../project2/project2.html">Previous: MakeMyTrip redesign</a>
+  <a class="btn" href="../project4/project4.html">Next: Photo Booth Studio<span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
+</div></div>
+</main>
+<script src="project3-script.js"></script>
+</body>
+</html>

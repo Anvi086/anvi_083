@@ -1,34 +1,34 @@
 (function(){
   /* ============ EDIT YOUR DETAILS HERE ============ */
   var LINKS={
-    email:'your.email@example.com',
-    linkedin:'https://www.linkedin.com/in/your-name',
-    resume:'assets/Anvi-Resume.pdf',   /* put your PDF in an "assets" folder with this name */
-    github:'https://github.com/your-name',
-    photo:''                            /* e.g. 'assets/anvi.jpg' for the About page photo */
+    email:'anvi6307@gmail.com',
+    linkedin:'https://www.linkedin.com/in/anvi-kashelikar/',
+    resume:'assets/Anvi-Resume.pdf',
+    github:'https://github.com/Anvi086',
+    photo:''
   };
-  /* For each project: img = 'assets/your-image.jpg' (optional), link = 'https://...' (optional case study link) */
+  /* link = the case study page that opens when the project is clicked in the book */
   var PROJECTS=[
-    {title:'Wayfinder',img:'',link:'',tag:'UX / UI',sum:'A campus navigation app that helps new students find their classes without getting lost.',
-     role:'UX/UI designer',tools:'Figma, Maze',time:'8 weeks',
-     p1:'New students lost time every week hunting for rooms in unfamiliar buildings.',
-     p2:'Interviewed 12 students, mapped three core journeys and tested two prototypes.',
-     p3:'Task success rose from 58% to 91% across usability tests.'},
-    {title:'Pantry Pal',img:'',link:'',tag:'Service design',sum:'A household tool that turns what is already in the fridge into meals, so less food gets thrown out.',
-     role:'Researcher and designer',tools:'Figma, Notion',time:'6 weeks',
-     p1:'Households waste food mostly because they forget what they own.',
-     p2:'Ran a two-week diary study, then designed a weekly plan flow.',
-     p3:'Testers planned meals 40% faster and wasted less in the trial week.'},
-    {title:'Monsoon Notes',img:'',link:'',tag:'Data viz',sum:'An interactive dashboard of rainfall across Indian states, built to make seasonal patterns easy to read.',
-     role:'Designer and developer',tools:'Python, D3, HTML',time:'5 weeks',
-     p1:'Public rainfall data exists but is hard for non-experts to explore.',
-     p2:'Cleaned 30 years of records and designed a map with a time slider.',
-     p3:'Readers found a state’s wettest month in under 10 seconds.'},
-    {title:'Sunday Market',img:'',link:'',tag:'Brand and web',sum:'A friendly identity and website for a weekend food market, from logo to online stall map.',
-     role:'Brand and web designer',tools:'Illustrator, Framer',time:'4 weeks',
-     p1:'The market had loyal regulars but no clear identity or online presence.',
-     p2:'Built a brand system, a stall directory and a mobile-first site.',
-     p3:'Launch weekend saw a clear rise in first-time visitors.'}
+    {title:'ghar.',img:'',link:'project1/project1.html',tag:'UX / UI',sum:'An app that helps new Maharashtrian students settle into Melbourne.',
+     role:'Researcher and designer',tools:'Figma, Miro',time:'2026',
+     p1:'New students have to sort out housing, food, money and friends all at once.',
+     p2:'Ran 5 interviews, built two personas and designed five app features.',
+     p3:'An app concept with a before and after flow.'},
+    {title:'MakeMyTrip',img:'',link:'project2/project2.html',tag:'UX redesign',sum:'A redesign of the flight search form, which asks for too much at once.',
+     role:'UX designer',tools:'Figma, Adobe Express',time:'2026',
+     p1:'The booking form crowds in fare types, GST fields and promos.',
+     p2:'Ran think-aloud, 5-second and first click tests, then built a prototype.',
+     p3:'Average time on task fell from 6:17 to 3:15.'},
+    {title:'Milky Way',img:'',link:'project3/project3.html',tag:'Interaction',sum:'A wordless musical galaxy for toddlers, played by moving near planets.',
+     role:'Designer and developer',tools:'JavaScript, Web Audio',time:'2026',
+     p1:'Toddlers cannot read, and most instruments punish wrong notes.',
+     p2:'Built six prototypes across mapping and feedback.',
+     p3:'An instrument where every note sounds right.'},
+    {title:'Photo Booth Studio',img:'',link:'project4/project4.html',tag:'Interactive',sum:'A drag and drop photo strip maker for an events company.',
+     role:'Designer and developer',tools:'HTML, CSS, JavaScript',time:'2026',
+     p1:'Event guests want a keepsake they can make themselves.',
+     p2:'Built frame colours, photo upload, stickers and download.',
+     p3:'A working strip maker in a dark red and cream theme.'}
   ];
   /* ================================================== */
 
@@ -247,21 +247,23 @@
   var book=$('book'),rig=$('rig'),leaves=[],cur=0,opened=false,busy=false,N=PROJECTS.length;
   var ARW_R='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
   var ARW_L='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>';
+  /* Anything with data-href sends the visitor to that project's case study page */
+  function href(i){return PROJECTS[i].link?' data-href="'+PROJECTS[i].link+'" style="cursor:pointer"':''}
   function textPane(i){
     var p=PROJECTS[i],dots='';
     PROJECTS.forEach(function(q,j){dots+='<button type="button" data-go="'+j+'" aria-label="Go to project '+(j+1)+': '+q.title+'" aria-current="'+(j===i)+'"></button>'});
-    return '<div class="pane"><div class="art mob">'+art(i)+'</div>'+
+    return '<div class="pane"><div class="art mob"'+href(i)+'>'+art(i)+'</div>'+
       '<div class="eyebrow mono"><span>Case study <b>'+String(i+1).padStart(2,'0')+'</b> / '+String(N).padStart(2,'0')+'</span><span class="tagc">'+p.tag+'</span></div>'+
-      '<h3>'+p.title+'</h3><p class="sum">'+p.sum+'</p>'+
+      '<h3'+href(i)+'>'+p.title+'</h3><p class="sum">'+p.sum+'</p>'+
       '<dl class="meta"><div><dt class="mono">Role</dt><dd>'+p.role+'</dd></div><div><dt class="mono">Tools</dt><dd>'+p.tools+'</dd></div><div><dt class="mono">Time</dt><dd>'+p.time+'</dd></div></dl>'+
       '<ul class="pts"><li><b>Problem</b><span>'+p.p1+'</span></li><li><b>What I did</b><span>'+p.p2+'</span></li><li><b>Outcome</b><span>'+p.p3+'</span></li></ul>'+
-      (p.link?'<a class="more" href="'+p.link+'" target="_blank" rel="noopener">View case study \u2197</a>':'')+
+      (p.link?'<a class="more" href="'+p.link+'">View case study \u2197</a>':'')+
       '<div class="pager"><div class="dots" role="group" aria-label="Choose a project">'+dots+'</div><div class="pg-btns">'+
       '<button class="btn sm prev" type="button" data-act="prev"'+(i===0?' disabled':'')+'><span class="dot">'+ARW_L+'</span>Back</button>'+
       '<button class="btn sm" type="button" data-act="next">'+(i===N-1?'Let’s talk':'Next project')+'<span class="dot">'+ARW_R+'</span></button>'+
       '</div></div></div>';
   }
-  function artPane(i){return '<div class="pane center"><div class="art">'+art(i)+'</div>'+(PROJECTS[i].img?'':'<span class="mono dim">Sample artwork. Swap in your screenshots.</span>')+'</div>'}
+  function artPane(i){return '<div class="pane center"><div class="art"'+href(i)+'>'+art(i)+'</div>'+(PROJECTS[i].link?'<span class="mono dim">Click to open the case study</span>':(PROJECTS[i].img?'':'<span class="mono dim">Sample artwork. Swap in your screenshots.</span>'))+'</div>'}
   function setZ(k,flipped){
     var el=leaves[k].el;
     el.style.zIndex=flipped?10+k:100-k;
@@ -309,7 +311,7 @@
   function openBook(){
     if(opened)return;opened=true;
     rig.style.transform='';book.classList.add('open');
-    $('bookHint').textContent='Turn the page with Next';
+    $('bookHint').textContent='Turn the page with Next, or click a project to open it';
     turn(0,true,0);updateInert();
     setTimeout(function(){var b=leaves[cur+1].front.querySelector('[data-act="next"]');if(b)b.focus({preventScroll:true})},reduce?0:1200);
   }
@@ -326,6 +328,9 @@
     },(count-1)*170+(reduce?0:1150));
   }
   book.addEventListener('click',function(e){
+    /* clicking a project's picture or title opens its case study page */
+    var g=opened&&e.target.closest('[data-href]');
+    if(g){location.href=g.getAttribute('data-href');return}
     var t=e.target.closest('[data-go],[data-act],.cover');if(!t)return;
     if(t.classList.contains('cover')){openBook();return}
     if(t.hasAttribute('data-go')){go(+t.getAttribute('data-go'));return}
