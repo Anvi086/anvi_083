@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anvi's Portfolio</title>
+<meta name="description" content="Anvi's portfolio: selected projects, about me and how to get in touch.">
+<meta name="theme-color" content="#2338F5">
+<meta property="og:title" content="Anvi's Portfolio">
+<meta property="og:description" content="Selected projects, about me and how to get in touch.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-80 -80 160 160' fill='%23FFB400'%3E%3Cpath d='M-8,-34 C-15,-47.3 10,-58.7 3,-72 C17,-56.8 15,-43.5 8,-34 Z' transform='rotate(0)'/%3E%3Cpath d='M-6,-34 C-13,-41.7 8,-48.3 3,-56 C15,-47.2 13,-39.5 6,-34 Z' transform='rotate(30)'/%3E%3Cpath d='M-8,-34 C-15,-47.3 10,-58.7 3,-72 C17,-56.8 15,-43.5 8,-34 Z' transform='rotate(60)'/%3E%3Cpath d='M-6,-34 C-13,-41.7 8,-48.3 3,-56 C15,-47.2 13,-39.5 6,-34 Z' transform='rotate(90)'/%3E%3Cpath d='M-8,-34 C-15,-47.3 10,-58.7 3,-72 C17,-56.8 15,-43.5 8,-34 Z' transform='rotate(120)'/%3E%3Cpath d='M-6,-34 C-13,-41.7 8,-48.3 3,-56 C15,-47.2 13,-39.5 6,-34 Z' transform='rotate(150)'/%3E%3Cpath d='M-8,-34 C-15,-47.3 10,-58.7 3,-72 C17,-56.8 15,-43.5 8,-34 Z' transform='rotate(180)'/%3E%3Cpath d='M-6,-34 C-13,-41.7 8,-48.3 3,-56 C15,-47.2 13,-39.5 6,-34 Z' transform='rotate(210)'/%3E%3Cpath d='M-8,-34 C-15,-47.3 10,-58.7 3,-72 C17,-56.8 15,-43.5 8,-34 Z' transform='rotate(240)'/%3E%3Cpath d='M-6,-34 C-13,-41.7 8,-48.3 3,-56 C15,-47.2 13,-39.5 6,-34 Z' transform='rotate(270)'/%3E%3Cpath d='M-8,-34 C-15,-47.3 10,-58.7 3,-72 C17,-56.8 15,-43.5 8,-34 Z' transform='rotate(300)'/%3E%3Cpath d='M-6,-34 C-13,-41.7 8,-48.3 3,-56 C15,-47.2 13,-39.5 6,-34 Z' transform='rotate(330)'/%3E%3Ccircle r='27'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <div class="bar">
+      <nav class="nav-links" aria-label="Primary">
+        <a class="nl" href="#home" data-nav="home">Home</a>
+        <a class="nl" href="#about-me" data-nav="about-me">About</a>
+      </nav>
+      <button class="sun-btn" id="theme" type="button" aria-label="Switch between light and dark mode" title="Switch light / dark"></button>
+      <nav class="nav-links r" aria-label="Secondary">
+        <a class="nl" data-link="resume" href="#contact">Resume</a>
+        <a class="nl" href="#contact" data-nav="contact">Contact</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- HOME VIEW -->
+<div id="view-home">
+  <section id="home" class="hero" aria-label="Introduction">
+    <div class="wrap">
+      <div class="panel" id="heroPanel">
+        <div class="top mono"><span>Portfolio / 2026</span><span class="pill"><i></i>Open to opportunities</span></div>
+        <h1 class="name" id="name" aria-label="Hello, I'm Anvi.">
+          <span class="line" id="l1" aria-hidden="true"></span>
+          <span class="line" id="l2" aria-hidden="true"></span>
+        </h1>
+        <div class="tools" id="tools">
+          <button class="btn-ghost" id="scatter" type="button">Scatter
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M18.4 5.6l-2.8 2.8M8.4 15.6l-2.8 2.8"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="band" aria-hidden="true"><div class="tilt"><div class="track" id="track"></div></div></div>
+
+  <section class="about" id="about-peek" aria-labelledby="about-h">
+    <div class="wrap">
+      <span class="mono" style="color:var(--dim)" id="about-h">A little about me</span>
+      <p class="statement" id="statement" style="margin-top:18px">Hi, I'm Anvi. I'm from *India* and I live in *Australia*. I aim to turn messy problems into clear, well-made things that people enjoy using, and I'm looking for a team where I can keep learning.</p>
+      <div class="about-foot">
+        <div class="chips"><span class="chip">From India</span><span class="chip">Living in Australia</span><span class="chip">Open to opportunities</span></div>
+        <a class="btn" href="#about-me">More about me
+          <span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="projects" id="projects" aria-labelledby="proj-h">
+    <div class="wrap">
+      <div class="proj-head">
+        <h2 class="h2" id="proj-h">Selected work</h2>
+        <span class="mono" style="color:var(--dim)" id="bookHint">Click the book to open it</span>
+      </div>
+      <div class="book" id="book">
+        <div class="rig" id="rig">
+          <div class="board l" aria-hidden="true"></div>
+          <div class="board r" aria-hidden="true"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact" aria-labelledby="contact-h">
+    <div class="wrap">
+      <div class="panel" id="contactPanel">
+        <span class="mono">Contact</span>
+        <h2 id="contact-h" aria-label="Say hello."><span id="chead" aria-hidden="true"></span></h2>
+        <div class="links">
+          <div class="lk wide"><span><span class="k mono">Email</span><span class="v" id="emailText"></span></span><button class="copy" id="copy" type="button">Copy</button></div>
+          <a class="lk" data-link="linkedin" href="#"><span><span class="k mono">LinkedIn</span><span class="v">Connect with me</span></span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          <a class="lk" data-link="resume" href="#"><span><span class="k mono">Resume</span><span class="v">View my resume</span></span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          <a class="lk wide" data-link="github" href="#"><span><span class="k mono">GitHub</span><span class="v">See my code</span></span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+        </div>
+        <div class="foot mono"><span>© 2026 Anvi</span><span>Based in Australia · Originally from India</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ABOUT VIEW -->
+<div id="view-about" hidden>
+  <section class="about-page" aria-labelledby="ap-h">
+    <div class="wrap">
+      <div class="ap-top">
+        <div class="photo" aria-label="Photo placeholder">
+          <div><div id="photoSun"></div><span class="mono">Your photo goes here</span></div>
+        </div>
+        <div>
+          <span class="mono" style="color:var(--dim)">About me</span>
+          <h1 id="ap-h">Hello, I'm <span>Anvi.</span></h1>
+          <div class="ap-text">
+            <p>I'm from India and I now live in Australia. Growing up in one country and building a life in another taught me to listen first, adapt quickly and explain things clearly to people who see the world differently from me.</p>
+            <p>I aim to turn messy, unclear problems into simple, well-made things that people enjoy using. I like to understand the people behind a problem before I start solving it, then test my ideas early and often.</p>
+            <p>Right now I'm looking for a team that cares about its craft, where I can keep learning and contribute from my first week.</p>
+          </div>
+          <dl class="facts">
+            <div><dt class="mono">From</dt><dd>India</dd></div>
+            <div><dt class="mono">Based in</dt><dd>Australia</dd></div>
+            <div><dt class="mono">Looking for</dt><dd>Graduate and junior roles, internships</dd></div>
+            <div><dt class="mono">Status</dt><dd>Open to opportunities</dd></div>
+          </dl>
+        </div>
+      </div>
+      <div class="vals">
+        <div class="val"><h3>Curious</h3><p>I ask the second question, then go and find the answer myself.</p></div>
+        <div class="val"><h3>Clear</h3><p>I write and present so that anyone on the team can follow the thinking.</p></div>
+        <div class="val"><h3>Finisher</h3><p>I take work from rough idea to something real that people can use.</p></div>
+      </div>
+      <div class="ap-actions">
+        <a class="btn" href="#projects">See my projects
+          <span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
+        <a class="btn ghost" href="#home">Back to home</a>
+      </div>
+    </div>
+  </section>
+</div>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
