@@ -3,9 +3,9 @@
   var LINKS={
     email:'anvi6307@gmail.com',
     linkedin:'https://www.linkedin.com/in/anvi-kashelikar/',
-    resume:'assets/Anvi-Resume.pdf',
+    resume: 'assets/Anvi_Kashelikar_Resume.pdf',
     github:'https://github.com/Anvi086',
-    photo:''
+    photo:'assets/photo.jpg'
   };
   /* link = the case study page that opens when the project is clicked in the book */
   var PROJECTS=[

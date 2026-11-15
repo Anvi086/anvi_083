@@ -1,68 +1,124 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Milky Way | Anvi's Portfolio</title>
-<meta name="description" content="Milky Way is a browser based musical toy for toddlers built with the Web Audio API.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Milky Way</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Work+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap">
 <link rel="stylesheet" href="project3-style.css">
 </head>
 <body>
-<header class="nav"><div class="wrap"><div class="bar">
-  <nav class="nav-links" aria-label="Primary"><a class="nl" href="../index.html#home">Home</a><a class="nl" href="../index.html#about-me">About</a></nav>
-  <button class="sun-btn" id="theme" type="button" aria-label="Switch between light and dark mode"></button>
-  <nav class="nav-links r" aria-label="Secondary"><a class="nl" href="../index.html#projects" aria-current="page">Projects</a><a class="nl" href="../index.html#contact">Contact</a></nav>
-</div></div></header>
-<main>
-<section class="cs-hero"><div class="wrap"><div class="panel">
-  <div class="top mono"><span>Case study 03 / 04</span><span class="pill"><i></i>Interaction design</span></div>
-  <h1 class="cs-title">Milky Way</h1>
-  <p class="cs-lead">A musical galaxy for toddlers. Move near a planet and it plays.</p>
-  <dl class="cs-meta">
-    <div><dt class="mono">Role</dt><dd>Designer and developer</dd></div>
-    <div><dt class="mono">Tools</dt><dd>HTML, CSS, JavaScript, Web Audio API</dd></div>
-    <div><dt class="mono">Time</dt><dd><span class="todo">add</span></dd></div>
-    <div><dt class="mono">Context</dt><dd>COMM2751 / 2753, Assignment 2</dd></div>
-  </dl>
-</div></div></section>
+<div id="pg"></div>
+<header><b>Anvi Kashelikar</b><a class="back" href="../index.html#projects">← Back to portfolio</a><button id="th" aria-label="Toggle light and dark">◐ Theme</button></header>
 <div class="wrap">
-<section class="cs-sec rv"><div class="cs-row"><span class="mono">Concept</span><div class="cs-body">
-<h2>Music with no words.</h2>
-<p>Milky Way is a browser instrument for toddlers and other non-readers. There are no menus, labels or text. Each glowing planet is mapped to a note in a major scale, so every combination sounds fine and there is no way to get it wrong. Sound reacts to how close the mouse is, not only to clicks.</p>
-<div class="stage" id="stage" aria-label="Try it: hover over the planets"></div>
-<p class="mono" style="color:var(--dim)">Try it. Move across the planets (sound starts after your first click or tap).</p>
-</div></div></section>
-<section class="cs-sec rv"><div class="cs-row"><span class="mono">Research</span><div class="cs-body">
-<h2>What I borrowed.</h2>
-<div class="cards">
-<div class="card"><h3>Music Mouse</h3><p>Constrained, always consonant scale (Laurie Spiegel).</p></div>
-<div class="card"><h3>Plink</h3><p>Continuous, smooth pitch feedback while you hold.</p></div>
-<div class="card"><h3>Holdspace</h3><p>One simple interaction and nothing else.</p></div>
-<div class="card"><h3>Diamond Synth</h3><p>A counter-example. Its label-heavy interface is what I avoided.</p></div>
+<section class="hero">
+<div>
+<p class="eb">Interface Design and Development · 2026</p>
+<h1>A solar system that lets young children <em>play music</em></h1>
+<p class="lead">Milky Way is a browser-based musical toy. Tap a planet to hear its note, tap the Sun to loop them all.</p>
+<div class="hs"><div><b>3</b><small>short steps explain how to play</small></div><div><b>8</b><small>planets, one pentatonic scale</small></div><div><b>44px</b><small>touch areas on the pitch dots</small></div></div>
+<div class="cta"><a class="btn" href="https://anvi086.github.io/specialisationWorkIndex-anvi/final-instrument.html">Play the instrument</a><a class="btn o" href="https://anvi086.github.io/specialisationWorkIndex-anvi/">Work index</a></div>
 </div>
-</div></div></section>
-<section class="cs-sec rv"><div class="cs-row"><span class="mono">Prototypes</span><div class="cs-body">
-<h2>Six prototypes, two design areas.</h2>
-<p>Mapping asks how a planet should turn into sound. Feedback asks how the screen should answer back.</p>
-<div class="cards">
-<div class="card"><h3>1. Tap a Planet</h3><p>Click a planet, hear its note.</p></div>
-<div class="card"><h3>2. Hold and Drag</h3><p>Plink-style column of planets with continuous sound.</p></div>
-<div class="card"><h3>3. Orbiting Planets</h3><p>Planets on orbit rings loop on their own. The sun is play.</p></div>
-<div class="card"><h3>4. Glow</h3><p>Planets glow brighter as you get close.</p></div>
-<div class="card"><h3>5. Ripples and Pulses</h3><p>Each note sends out a ripple.</p></div>
-<div class="card"><h3>6. Ripples Loop</h3><p>Ripples plus a looping sequencer.</p></div>
+<div class="stage" id="stage">
+<div class="hint"><span>Volume on, then tap planets and the Sun.</span><span class="st" id="loopState" aria-live="polite">Loop stopped</span></div>
+<div class="sky" id="sky"></div>
 </div>
-<div class="links-row"><a class="btn" href="#" id="live">Open the live prototypes<span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a></div>
-<p style="margin-top:14px"><span class="todo">Replace the # in the live link with your GitHub Pages URL, and add your peer testing findings</span></p>
-</div></div></section>
-<div class="cs-next rv">
-  <a class="btn ghost" href="../project2/project2.html">Previous: MakeMyTrip redesign</a>
-  <a class="btn" href="../project4/project4.html">Next: Photo Booth Studio<span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
+</section>
+
+<div class="meta">
+<div><small>My role</small>Designer and developer</div>
+<div><small>Built with</small>HTML, CSS, SVG, JavaScript, Tone.js</div>
+<div><small>Timeline</small>October 2026</div>
+<div><small>Course</small>Interface Design and Development</div>
+</div>
+
+<div class="cs">
+<nav class="side" id="side" aria-label="Sections"></nav>
+<div>
+
+<section class="sx" data-t="Overview"><p class="eb">Overview</p><h2>Music without reading or rules</h2>
+<p>My final instrument is built around the solar system. The Sun sits on the left as a big start and stop button, and eight planets are laid out across the screen. Tapping a planet plays its note, sends coloured ripples out from it and switches it on for the loop. Tapping the Sun starts a loop that plays every planet that is switched on, one after another, from Mercury to Neptune.</p>
+<p>To change the pitch, tap the top or bottom of a planet. A panel along the bottom moves every planet up or down in five steps. All notes come from a pentatonic scale, so any combination a child makes sounds pleasant.</p></section>
+
+<section class="sx" data-t="Brief"><p class="eb">Design scenario</p><h2>The brief</h2>
+<div class="grid g2">
+<div class="card"><b>Prompt</b><p style="font-size:17px;color:var(--ink)">Design a way for young children with minimal language skills to explore music.</p></div>
+<div class="card"><b>Context</b><p>Browser-based instruments let people perform and explore complex audio design. That depth of control can be intimidating for adults, and more so for young children whose language skills are still developing.</p></div></div></section>
+
+<section class="sx" data-t="Approach"><p class="eb">Approach</p><h2>How the finished project answers the brief</h2>
+<div class="grid">
+<div class="card"><div class="num">01</div><b>Very little reading</b><p>Three short steps sit in a slim strip at the top, each with a number, an icon and one sentence. Pitch shows as a word and as a row of dots, so it can be seen as well as heard.</p></div>
+<div class="card"><div class="num">02</div><b>Nothing can sound wrong</b><p>Every note comes from a pentatonic scale, so any combination of planets sounds pleasant.</p></div>
+<div class="card"><div class="num">03</div><b>Every touch gets a reaction</b><p>Sound, ripples, glowing planets and twinkling stars respond straight away, which teaches cause and effect.</p></div>
+<div class="card"><div class="num">04</div><b>Big, forgiving targets</b><p>Planets and the Sun are large. Tapping a planet again switches it off, and the pitch dots have 44px touch areas.</p></div>
+<div class="card"><div class="num">05</div><b>A calm screen</b><p>Instruction and pitch panels are slim and see-through so the planets stay the focus. Nothing bounces or pulses before the child has touched anything.</p></div>
+<div class="card"><div class="num">06</div><b>Adaptive layout</b><p>The sky scales to any screen, the panels wrap on narrow screens, and animation is reduced for people who prefer less motion.</p></div></div></section>
+
+<section class="sx" data-t="Features"><p class="eb">Core interactive features</p><h2>Six behaviours, three files</h2>
+<p>The instrument is <code>final-instrument.html</code> for the SVG sky and panels, a stylesheet for look and animation, and a script for sound and behaviour. Pick a feature to see how it works.</p>
+<div class="tabs" id="tabs"></div><div class="sol" id="sol"></div></section>
+
+<section class="sx" data-t="Technique"><p class="eb">Extended technique</p><h2>Keeping sound and picture in step</h2>
+<p>Tapping the Sun starts and stops <code>Tone.Transport</code>. A <code>Tone.Loop</code> runs every eighth note and visits one planet per step, from Mercury to Neptune, playing it only if it is switched on.</p>
+<div class="grid">
+<div class="card"><b>Its own synth</b><p>The loop plays through a separate synth, so it can't clash with notes the child plays by hand.</p></div>
+<div class="card"><b>Exact timing</b><p>Notes are scheduled at the time the loop provides, so the rhythm stays steady even if the page is busy.</p></div>
+<div class="card"><b>Synced ripples</b><p><code>Tone.Draw.schedule</code> fires each ripple at the moment its sound plays, not a little earlier when the code runs.</p></div></div>
+<pre>const loop = new Tone.Loop((time) =&gt; {
+  const id = planetOrder[step % planetOrder.length];
+
+  if (activePlanets.has(id)) {
+    loopSynth.triggerAttackRelease(noteFor(id), "16n", time);
+    Tone.Draw.schedule(
+      () =&gt; ripplePlanet(document.getElementById(id)), time);
+  }
+  step++;
+}, "8n");</pre></section>
+
+<section class="sx" data-t="Design system"><p class="eb">Design system</p><h2>Dark space, bright accents, one rounded font</h2>
+<p>Four things hold the look together: dark space, a few bright accents, one rounded font, and see-through panels that keep the planets in focus. The base palette is 1bit Monitor Glow by Polyducks, with a purple and a yellow accent added. Click a colour to copy it.</p>
+<div class="sw" id="sw"></div><p class="copied" id="copied" aria-live="polite"></p>
+
+<h3>Planets, colours and notes</h3>
+<p>Each colour is also used for that planet's ripples and the stars that flash when it plays. The note is what it plays when the pitch is in the middle.</p>
+<div class="bars" id="bars"></div>
+
+<h3>Typography</h3>
+<p>One font, Work Sans, with sizes that grow and shrink with the screen.</p>
+<div class="tw"><table><thead><tr><th>Used for</th><th>Example</th><th>Style</th></tr></thead><tbody>
+<tr><td>Page title</td><td class="t1">Milky Way</td><td>Bold, 2 to 3.4rem</td></tr>
+<tr><td>Step title</td><td class="t2">Tap the planets</td><td>Bold, 1 to 1.2rem</td></tr>
+<tr><td>Step sentence</td><td class="t3">Touch a planet to hear its note.</td><td>Regular, dimmer white, 0.85 to 1rem</td></tr>
+<tr><td>Pitch heading</td><td class="t4">Pitch: Middle</td><td>Bold, 1 to 1.3rem</td></tr>
+<tr><td>Buttons</td><td class="t5">Higher</td><td>Semi-bold, 1.1rem</td></tr></tbody></table></div>
+
+<h3>Components and rules</h3>
+<div class="grid">
+<div class="card"><b>Planet and Sun</b><p>SVG circle with a radial gradient for depth. Glows on hover, glows more when switched on.</p></div>
+<div class="card"><b>Step strip</b><p>One slim see-through bar with three steps: a yellow number, an icon, a title and one sentence.</p></div>
+<div class="card"><b>Pitch panel</b><p>The pitch word, Lower and Higher buttons, and a five-dot slider. The current step is the big white dot.</p></div>
+<div class="card"><b>Layout</b><p>Steps on top, solar system in the middle, pitch along the bottom. The planets get the most room.</p></div>
+<div class="card"><b>Shape</b><p>Rounded panels (18px) with a thin pale border. Simple line icons, no emoji.</p></div>
+<div class="card"><b>Motion</b><p>Only ripples, twinkling stars and a gentle Sun pulse while the loop plays. Reduced when the device asks for less motion.</p></div>
+<div class="card"><b>Access</b><p>Pitch controls are real buttons with labels. Touch areas for the dots are 44px.</p></div>
+<div class="card"><b>Intro dialog</b><p>Dark box with a white border and a purple OK button. Warns the grown-up about the sound.</p></div></div></section>
+
+<section class="sx" data-t="Timeline"><p class="eb">Timeline</p><h2>From work index to finished instrument</h2>
+<p>Selected entries from the commit log.</p>
+<ol class="log">
+<li><time>Thu 23 Jul 2026</time><b>Work index started</b><p>Swapped in my own details, favicon and GitHub.</p></li>
+<li><time>Mon 28 Sep to Fri 2 Oct 2026</time><b>Assignment 2 prototypes</b><p>Built the prototype pages, linked them together, added the peer testing form link and debugged.</p></li>
+<li><time>Thu 22 Oct 2026</time><b>Layout exploration 6 merged</b><p>The chosen layout direction joined the main branch.</p></li>
+<li><time>Sun 25 Oct 2026</time><b>Home page started</b></li>
+<li><time>Tue 27 Oct 2026</time><b>Instructions added</b><p>Added instructions to make the user flow easier to understand, then commented the code.</p></li>
+<li><time>Wed 28 Oct 2026</time><b>System documentation and homepage edits</b><p>Wrote up the documentation and design system.</p></li></ol></section>
+
+<section class="sx" data-t="Reflection"><p class="eb">Reflection</p><h2>What I take from this</h2>
+<p class="todo">✎ Add what went well, what you would change, and what you learned about designing for young children.</p></section>
+
 </div></div>
-</main>
+<footer><b>Thank you.</b><p>Anvi Kashelikar · <a href="https://github.com/Anvi086">GitHub</a></p></footer>
+</div>
 <script src="project3-script.js"></script>
 </body>
 </html>

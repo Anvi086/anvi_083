@@ -1,61 +1,96 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Photo Booth Studio | Anvi's Portfolio</title>
-<meta name="description" content="Photo Booth Studio is a drag and drop photo strip maker.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Photo Booth Studio</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,600&display=swap">
 <link rel="stylesheet" href="project4-style.css">
 </head>
 <body>
-<header class="nav"><div class="wrap"><div class="bar">
-  <nav class="nav-links" aria-label="Primary"><a class="nl" href="../index.html#home">Home</a><a class="nl" href="../index.html#about-me">About</a></nav>
-  <button class="sun-btn" id="theme" type="button" aria-label="Switch between light and dark mode"></button>
-  <nav class="nav-links r" aria-label="Secondary"><a class="nl" href="../index.html#projects" aria-current="page">Projects</a><a class="nl" href="../index.html#contact">Contact</a></nav>
-</div></div></header>
-<main>
-<section class="cs-hero"><div class="wrap"><div class="panel">
-  <div class="top mono"><span>Case study 04 / 04</span><span class="pill"><i></i>Interactive media</span></div>
-  <h1 class="cs-title">Photo Booth Studio</h1>
-  <p class="cs-lead">A drag and drop photo strip maker for an events company.</p>
-  <dl class="cs-meta">
-    <div><dt class="mono">Role</dt><dd>Designer and developer</dd></div>
-    <div><dt class="mono">Tools</dt><dd>HTML, CSS, JavaScript</dd></div>
-    <div><dt class="mono">Time</dt><dd><span class="todo">add</span></dd></div>
-    <div><dt class="mono">Context</dt><dd>Interactive Media, Assignment 3</dd></div>
-  </dl>
-</div></div></section>
+<div id="pg"></div>
+<header><b>Anvi Kashelikar</b><a class="back" href="../index.html#projects">← Back to portfolio</a><button id="th" aria-label="Toggle light and dark">◐ Theme</button></header>
 <div class="wrap">
-<section class="cs-sec rv"><div class="cs-row"><span class="mono">Concept</span><div class="cs-body">
-<h2>A strip you build with your hands.</h2>
-<p>Photo Booth Studio is part of a bigger site for an events company that does weddings, birthdays and graduations. Guests make their own photo strip: drag a colour onto the frame, add three pictures, drop on stickers, then download the result. The visual theme is dark red with cream text.</p>
-<p>Click a swatch below to see the frame idea in miniature.</p>
-<div class="booth"><div class="strip" id="strip"><i></i><i></i><i></i></div>
-<div class="sw" id="sw"><button type="button" style="--c:#7A1620" aria-label="Wine"></button><button type="button" style="--c:#E8B04B" aria-label="Gold"></button><button type="button" style="--c:#2F6F5E" aria-label="Green"></button><button type="button" style="--c:#F5E9D6" aria-label="Cream"></button></div></div>
-</div></div></section>
-<section class="cs-sec rv"><div class="cs-row"><span class="mono">Features</span><div class="cs-body">
-<h2>What it does.</h2>
-<div class="cards">
-<div class="card"><h3>Frame colours</h3><p>Drag a colour onto the strip and the whole frame changes.</p></div>
-<div class="card"><h3>Three photos</h3><p>Upload pictures from your laptop into the centred strip.</p></div>
-<div class="card"><h3>Stickers</h3><p>Drag stickers onto the strip and resize them.</p></div>
-<div class="card"><h3>Download</h3><p>Save the finished strip as an image.</p></div>
+<section class="hero">
+<div>
+<p class="eb">Interactive Media · Assignment 3</p>
+<h1>Photo Booth <em>Studio</em></h1>
+<p class="lead">A drag and drop interaction game. Upload everyday photos, and the site turns them into a photo booth strip you can decorate.</p>
+<div class="hs"><div><b>3</b><small>photos pre-loaded on the strip</small></div><div><b>9</b><small>frame colours to drag on</small></div><div><b>1</b><small>action to learn: drag and drop</small></div></div>
+<div class="cta"><a class="btn" href="https://anvi086.github.io/InteractiveMedia-Anvi086/assignment3.html">Play the project</a><a class="btn o" href="#s3">See the process</a></div>
 </div>
-<div class="shots"><div class="shot wide" data-img="assets/photobooth-screen.png" data-alt="Photo Booth Studio interface">assets/photobooth-screen.png</div></div>
-<div class="links-row"><a class="btn" href="#" id="live">Try Photo Booth Studio<span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a></div>
-</div></div></section>
-<section class="cs-sec rv"><div class="cs-row"><span class="mono">Reflection</span><div class="cs-body">
-<h2>What I learned.</h2>
-<p><span class="todo">Add what was hardest to build, and what testers said. Replace the # in the link with your live URL.</span></p>
-</div></div></section>
-<div class="cs-next rv">
-  <a class="btn ghost" href="../project3/project3.html">Previous: Milky Way</a>
-  <a class="btn" href="../index.html#contact">Let’s talk<span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
+<div class="stage">
+<div class="strip" id="strip" aria-label="Photo strip. Drop a frame colour here.">
+<img src="img/photo1.jpg" alt="Golden retriever smiling, looking to the side" width="685" height="445">
+<img src="img/photo2.jpg" alt="Golden retriever looking at the camera" width="679" height="445">
+<img src="img/photo3.jpg" alt="Golden retriever resting under a blue towel" width="685" height="445">
+<span class="tag">photobooth</span>
+</div>
+<div class="swatches" id="swatches" role="group" aria-label="Frame colours"></div>
+<p class="note"><b>Try it.</b> Drag a colour onto the strip, or tap one. <span id="cn">Navy</span> is on.</p>
+</div>
+</section>
+
+<div class="meta">
+<div><small>Course</small>Interactive Media</div>
+<div><small>Project</small>Assignment 3, browser based interactive project</div>
+<div><small>Interaction</small>Drag and drop</div>
+<div><small>Built with</small>HTML, CSS, JavaScript</div>
+</div>
+
+<div class="cs">
+<nav class="side" id="side" aria-label="Sections"></nav>
+<div>
+
+<section class="sx" data-t="Overview"><p class="eb">Overview</p><h2>A photo strip you decorate by hand</h2>
+<div class="grid g2">
+<div class="card"><b>Context</b><p class="ink">A fun photobooth style strip maker where you can upload your everyday photos and the site turns them into a photo booth strip.</p></div>
+<div class="card"><b>Action: drag and drop</b><p class="ink">You can add stickers and change the colour of the frames to customize them.</p></div></div></section>
+
+<section class="sx" data-t="Research"><p class="eb">Research</p><h2>Three tools that do something similar</h2>
+<p>I looked at how existing sites handle photos, frames and stickers before sketching my own. Click an image to enlarge it.</p>
+<div class="refs">
+<article><figure class="fig"><img class="zoom" tabindex="0" src="img/kapwing.jpg" alt="Kapwing editor with a media panel and a blank canvas" loading="lazy" width="1800" height="1028"></figure><span class="n">Example 1</span><h4>Kapwing</h4><p>A full editor. You start with an upload box, a blank canvas and a long tool column down the side.</p></article>
+<article><figure class="fig"><img class="zoom" tabindex="0" src="img/photobooth-io.jpg" alt="Photobooth.io customise page with layout, photo order and a grid of frame colours" loading="lazy" width="1800" height="1024"></figure><span class="n">Example 2</span><h4>Photobooth.io</h4><p>Focused on strips. You change the layout, reorder photos and pick a frame colour or pattern from a big grid.</p></article>
+<article><figure class="fig"><img class="zoom" tabindex="0" src="img/idphotodiy.jpg" alt="IDPhotoDIY Add Stickers to Photo page with an upload box and sticker tools" loading="lazy" width="1800" height="1024"></figure><span class="n">Example 3</span><h4>IdPhotoDiy</h4><p>Built around stickers. You upload a photo, then use Add Sticker and Delete Sticker buttons and a size setting.</p></article></div></section>
+
+<section class="sx" data-t="Reasoning"><p class="eb">Reasoning</p><h2>How the action fits</h2>
+<div class="grid">
+<div class="card"><div class="num">01</div><b>It feels like a real strip</b><p>It's a fun photo booth website, so the interaction should feel like playing with a real photo strip.</p></div>
+<div class="card"><div class="num">02</div><b>It's how you'd decorate one</b><p>Drag and drop fits because it's how you'd naturally decorate a strip.</p></div>
+<div class="card"><div class="num">03</div><b>Straight to decorating</b><p>Photos come already loaded, like a tutorial, so users can go straight to decorating.</p></div>
+<div class="card"><div class="num">04</div><b>Learn it once</b><p>Stickers and colours use the same action, so people only have to learn it once.</p></div>
+<div class="card"><div class="num">05</div><b>Focused prototype</b><p>To keep the prototype focused, the upload button won't work.</p></div>
+<div class="card"><div class="num">06</div><b>Two drags</b><p>Pick up a sticker and place it on the strip. Drag a colour onto the frame to change it.</p></div></div></section>
+
+<section class="sx" data-t="Planning" id="s3"><p class="eb">Project planning</p><h2>A simple photo booth you can drag things onto</h2>
+<p>I'll build a simple photo booth website where you can drag stickers onto a strip of your own photos and change the frame colour.</p>
+<div class="grid">
+<div class="card"><div class="num">1</div><b>Set up the page</b><p>Build the photo strip, a row of stickers and a row of frame colours. The photos are pre-loaded.</p></div>
+<div class="card"><div class="num">2</div><b>Make it draggable</b><p>Stickers and colours can be picked up and dropped onto the strip.</p></div>
+<div class="card"><div class="num">3</div><b>Polish and test</b><p>Polish, troubleshoot and fix any bugs.</p></div></div>
+
+<h3>From sketch to mock up</h3>
+<p>The mock up keeps the sketch's three columns: frame colours on the left, the strip with its photos in the middle, stickers on the right.</p>
+<div class="tabs" id="tabs" role="tablist"><button type="button" role="tab" data-i="0" class="on">Sketch</button><button type="button" role="tab" data-i="1">Mock up</button></div>
+<figure class="fig" id="shot"></figure></section>
+
+<section class="sx" data-t="Scope"><p class="eb">Bigger picture</p><h2>One small part of an events site</h2>
+<p>This prototype is one small part of a bigger website for an events company that plans weddings, birthdays, graduations and other events.</p>
+<p>On the full site, customers can customise the stickers and frames to suit their event. For this project I'm only focusing on one piece of it, the photo booth strip, and the drag and drop interaction that goes with it.</p>
+<p style="margin-top:18px"><b>Sticker packs in the live project</b></p>
+<ul class="pills"><li class="open">Trial pack, open</li><li>Wedding, locked</li><li>Birthday, locked</li><li>Graduation, locked</li></ul></section>
+
+<section class="sx" data-t="Play it"><p class="eb">See it for real</p><h2>Open the finished booth</h2>
+<div class="band"><p class="eb">Live project</p><p style="margin:0 0 14px;font:800 22px/1.3 var(--d)">Drag a colour onto the strip, then place stickers wherever you like.</p><a class="btn" style="background:var(--hi);color:#2a0606;border-color:var(--hi)" href="https://anvi086.github.io/InteractiveMedia-Anvi086/assignment3.html">Open Photobooth</a></div></section>
+
+<section class="sx" data-t="Reflection"><p class="eb">Reflection</p><h2>What I take from this</h2>
+<p class="todo">✎ Add what went well, what you would change, and what you learned about drag and drop.</p></section>
+
 </div></div>
-</main>
+<footer><b>Thank you.</b><p>Anvi Kashelikar · <a href="https://github.com/Anvi086">GitHub</a></p></footer>
+</div>
+<div id="lb" role="dialog" aria-label="Enlarged image"><img alt=""></div>
 <script src="project4-script.js"></script>
 </body>
 </html>

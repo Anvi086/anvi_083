@@ -1,35 +1,37 @@
-(function(){
-  var $=function(id){return document.getElementById(id)},root=document.documentElement;
-  /* sun + theme toggle (same behaviour as the home page) */
-  function sun(){var r='',i,L,w,d;for(i=0;i<12;i++){L=i%2?22:38;w=i%2?6:8;
-    d='M'+(-w)+',-34 C'+(-w-7)+','+(-34-L*.35)+' '+(w+2)+','+(-34-L*.65)+' 3,'+(-34-L)+' C'+(w+9)+','+(-34-L*.6)+' '+(w+7)+','+(-34-L*.25)+' '+w+',-34 Z';
-    r+='<path d="'+d+'" transform="rotate('+i*30+')"/>';}
-    return '<svg viewBox="-80 -80 160 160" aria-hidden="true" fill="var(--sun)">'+r+'<circle r="27"/></svg>'}
-  $('theme').innerHTML=sun();
-  try{var s=localStorage.getItem('anvi-theme');if(s)root.setAttribute('data-theme',s)}catch(e){}
-  $('theme').addEventListener('click',function(){
-    var t=root.getAttribute('data-theme'),dark=t?t==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
-    root.setAttribute('data-theme',dark?'light':'dark');
-    try{localStorage.setItem('anvi-theme',root.getAttribute('data-theme'))}catch(e){}
-  });
-  /* screenshots: if the image file exists it replaces the dashed placeholder */
-  document.querySelectorAll('.shot[data-img]').forEach(function(box){
-    var im=new Image();im.alt=box.getAttribute('data-alt')||'';
-    im.onload=function(){box.textContent='';box.appendChild(im)};
-    im.src=box.getAttribute('data-img');
-  });
-  /* reveal on scroll */
-  var els=document.querySelectorAll('.rv');
-  if('IntersectionObserver' in window){
-    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
-    els.forEach(function(el){io.observe(el)});
-  }else els.forEach(function(el){el.classList.add('in')});
-})();
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const root=document.documentElement,reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+try{const t=localStorage.getItem('anvi-theme');if(t)root.dataset.theme=t}catch(e){}
+$('#th').onclick=()=>{const d=root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme:dark)').matches;root.dataset.theme=d?'light':'dark';try{localStorage.setItem('anvi-theme',root.dataset.theme)}catch(e){}};
 
-(function(){
-  var strip=document.getElementById('strip');
-  document.querySelectorAll('#sw button').forEach(function(b){
-    b.addEventListener('click',function(){strip.style.setProperty('--f',getComputedStyle(b).getPropertyValue('--c'))});
-  });
-  document.getElementById('live').addEventListener('click',function(e){if(this.getAttribute('href')==='#')e.preventDefault()});
-})();
+/* frame colours: tap or drag onto the strip */
+const C=[['White','#ffffff'],['Black','#0b0b0b'],['Coral','#ff6b6b'],['Peach','#ffc08a'],['Navy','#141638'],['Lilac','#b98cff'],['Green','#2fb52f'],['Pink','#ff80d5'],['Red','#e00000']];
+const strip=$('#strip'),wrap=$('#swatches'),bt=[];
+const lum=h=>{const r=parseInt(h.slice(1,3),16)/255,g=parseInt(h.slice(3,5),16)/255,b=parseInt(h.slice(5,7),16)/255;return .2126*r+.7152*g+.0722*b};
+function apply(i){const k=C[i];strip.style.setProperty('--frame',k[1]);strip.style.setProperty('--frame-ink',lum(k[1])>.55?'#2a0606':'#f6ece0');$('#cn').textContent=k[0];bt.forEach((b,j)=>b.setAttribute('aria-pressed',j===i?'true':'false'))}
+C.forEach((k,i)=>{const b=document.createElement('button');b.type='button';b.className='swb';b.style.setProperty('--c',k[1]);b.draggable=true;b.setAttribute('aria-label',k[0]+' frame');b.setAttribute('aria-pressed','false');
+b.addEventListener('click',()=>apply(i));
+b.addEventListener('dragstart',e=>{try{e.dataTransfer.setData('text/plain',String(i));e.dataTransfer.effectAllowed='copy'}catch(x){}});
+wrap.appendChild(b);bt.push(b)});
+['dragover','dragenter'].forEach(ev=>strip.addEventListener(ev,e=>{e.preventDefault();strip.classList.add('over')}));
+strip.addEventListener('dragleave',()=>strip.classList.remove('over'));
+strip.addEventListener('drop',e=>{e.preventDefault();strip.classList.remove('over');const i=parseInt(e.dataTransfer.getData('text/plain'),10);if(!isNaN(i)&&C[i])apply(i)});
+apply(4);
+
+/* sketch / mock up tabs */
+const SH=[{src:'img/sketch.jpg',alt:'Hand-drawn sketch of the photobooth layout: frame colours on the left, the strip in the middle, stickers on the right, and an upload image button underneath',cap:'First sketch. Arrows note the two drags: colour to frame, sticker to anywhere on the strip.',w:1800,h:1066},
+{src:'img/mockup.jpg',alt:'Photobooth mock up with nine frame colour circles, a navy photo strip with three dog photos, and a panel of stickers',cap:'Mock up. Nine frame colours, the strip with its pre-loaded photos, and a sticker panel.',w:1800,h:1166}];
+function shot(i){const s=SH[i];$('#shot').innerHTML=`<img class="zoom" tabindex="0" src="${s.src}" alt="${s.alt}" width="${s.w}" height="${s.h}"><figcaption>${s.cap} Click to enlarge.</figcaption>`;$$('#tabs button').forEach((b,j)=>{b.classList.toggle('on',j===i);b.setAttribute('aria-selected',j===i)})}
+$('#tabs').addEventListener('click',e=>{const b=e.target.closest('button');if(b)shot(+b.dataset.i)});shot(0);
+
+/* lightbox */
+const lb=$('#lb');
+function openLb(img){lb.querySelector('img').src=img.currentSrc||img.src;lb.querySelector('img').alt=img.alt;lb.classList.add('on')}
+document.addEventListener('click',e=>{const z=e.target.closest('img.zoom');if(z)return openLb(z);if(e.target.closest('#lb'))lb.classList.remove('on')});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')lb.classList.remove('on');if(e.key==='Enter'&&document.activeElement&&document.activeElement.classList&&document.activeElement.classList.contains('zoom'))openLb(document.activeElement)});
+
+/* nav, progress */
+$('#side').innerHTML=$$('.sx').map((s,i)=>{if(!s.id)s.id='s'+i;return `<button class="${i?'':'on'}" data-s="${s.id}">${s.dataset.t}</button>`}).join('');
+$('#side').addEventListener('click',e=>{const b=e.target.closest('[data-s]');if(b)document.getElementById(b.dataset.s).scrollIntoView({behavior:reduce?'auto':'smooth'})});
+const spy=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)$$('#side button').forEach(b=>b.classList.toggle('on',b.dataset.s===e.target.id))}),{rootMargin:'-35% 0px -60% 0px'});
+$$('.sx').forEach(s=>spy.observe(s));
+addEventListener('scroll',()=>{$('#pg').style.width=scrollY/Math.max(1,document.documentElement.scrollHeight-innerHeight)*100+'%'},{passive:true});

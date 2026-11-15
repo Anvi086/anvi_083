@@ -1,66 +1,63 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>MakeMyTrip redesign | Anvi's Portfolio</title>
-<meta name="description" content="A redesign of the MakeMyTrip flight search to reduce an overwhelming booking flow.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MakeMyTrip redesign | Case study by Anvi Kashelikar</title>
+<meta name="description" content="A UX case study on redesigning three usability problems in MakeMyTrip flight booking, tested before and after.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Inter:wght@400;500;700&display=swap">
 <link rel="stylesheet" href="project2-style.css">
 </head>
 <body>
-<header class="nav"><div class="wrap"><div class="bar">
-  <nav class="nav-links" aria-label="Primary"><a class="nl" href="../index.html#home">Home</a><a class="nl" href="../index.html#about-me">About</a></nav>
-  <button class="sun-btn" id="theme" type="button" aria-label="Switch between light and dark mode"></button>
-  <nav class="nav-links r" aria-label="Secondary"><a class="nl" href="../index.html#projects" aria-current="page">Projects</a><a class="nl" href="../index.html#contact">Contact</a></nav>
-</div></div></header>
-<main>
-<section class="cs-hero"><div class="wrap"><div class="panel">
-  <div class="top mono"><span>Case study 02 / 04</span><span class="pill"><i></i>UX redesign</span></div>
-  <h1 class="cs-title">MakeMyTrip</h1>
-  <p class="cs-lead">Fixing a flight search form that asks for too much at once.</p>
-  <dl class="cs-meta">
-    <div><dt class="mono">Role</dt><dd>UX designer</dd></div>
-    <div><dt class="mono">Tools</dt><dd>Figma, Adobe Express</dd></div>
-    <div><dt class="mono">Time</dt><dd><span class="todo">add</span></dd></div>
-    <div><dt class="mono">Context</dt><dd>Principles Project, RMIT</dd></div>
-  </dl>
-</div></div></section>
+<div id="pg"></div>
+<header><b>Anvi Kashelikar</b><a class="back" href="../index.html#projects">← Back to portfolio</a><button id="th" aria-label="Toggle light and dark">◐ Theme</button></header>
 <div class="wrap">
-<section class="cs-sec rv"><div class="cs-row"><span class="mono">Problem</span><div class="cs-body">
-<h2>An overwhelming booking flow.</h2>
-<p>The MakeMyTrip flight search puts trip type, fare type, a GST field, price drop protection and promotions in one crowded form. In my first 5-second test, all 5 participants knew it was a flight booking page and 4 of 5 remembered details like Mumbai to Melbourne, the dates and cheapest or fastest. The problem showed up once they had to actually do something.</p>
-</div></div></section>
-<section class="cs-sec rv"><div class="cs-row"><span class="mono">Process</span><div class="cs-body">
-<h2>Test, redesign, test again.</h2>
-<p>I ran think-aloud tests on the original site, built a clickable redesign in Figma, then ran the same tasks on it to compare. I also ran a first click test, asking where people would click to compare flights.</p>
-</div></div></section>
-<section class="cs-sec rv"><div class="cs-row"><span class="mono">Results</span><div class="cs-body">
-<h2>Faster on the redesign.</h2>
-<div class="cards">
-<div class="card"><div class="stat">6:17<small>average time on task, original site</small></div></div>
-<div class="card"><div class="stat">3:15<small>average time on task, redesign</small></div></div>
-<div class="card"><div class="stat">23s to 12s<small>average first click time</small></div></div>
-<div class="card"><div class="stat">10/15<small>redesign participants who clicked the right place</small></div></div>
+<section>
+<p class="eb">Principles Project · RMIT · 2026</p>
+<h1>Making MakeMyTrip’s flight booking <em>less overwhelming</em></h1>
+<p class="lead">A redesign of three usability problems on MakeMyTrip, tested with real people before and after.</p>
+<div class="hs rv"><div><b><span data-n="23">0</span>s → <span data-n="12">0</span>s</b><small>average time to find where to click to compare flights</small></div><div><b><span data-n="10">0</span>/15</b><small>clicked the right place first on the redesign</small></div><div><b><span data-n="3">0</span>/3</b><small>said the final price matched what they expected</small></div></div>
+</section>
+<div class="meta">
+<div><small>Course</small>Principles Project, RMIT</div>
+<div><small>My role</small>UX researcher and designer</div>
+<div><small>Methods</small>5-second test, think aloud, first click</div>
+<div><small>Tools</small>Lyssna, Figma, Adobe Express</div>
 </div>
-<div class="rows" aria-label="Average time on task in seconds">
-<div class="r"><span>Original</span><span class="t"><span class="f alt" data-v="377"></span></span><span>6:17</span></div>
-<div class="r"><span>Redesign</span><span class="t"><span class="f" data-v="195"></span></span><span>3:15</span></div>
-</div>
-<p style="margin-top:18px">Original times were 7:19, 5:21 and 6:12. Redesign times were about 4:00, 3:45 and 2:00. The first click test used 5 participants on the original and 15 on the redesign, so treat the comparison as a direction rather than proof.</p>
-<div class="shots"><div class="shot wide" data-img="assets/mmt-before-after.png" data-alt="MakeMyTrip original and redesigned search form">assets/mmt-before-after.png</div></div>
-</div></div></section>
-<section class="cs-sec rv"><div class="cs-row"><span class="mono">Reflection</span><div class="cs-body">
-<h2>What I learned.</h2>
-<p><span class="todo">Add one or two lines on what you would change next</span></p>
-</div></div></section>
-<div class="cs-next rv">
-  <a class="btn ghost" href="../project1/project1.html">Previous: ghar.</a>
-  <a class="btn" href="../project3/project3.html">Next: Milky Way<span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
+<div class="cs">
+<nav class="side" id="side" aria-label="Sections"></nav>
+<div>
+
+<section class="sx" data-t="Overview"><p class="eb">Overview</p><h2>Why MakeMyTrip</h2>
+<div class="rv"><p>MakeMyTrip is one of India’s biggest travel booking platforms. For the Principles Project at RMIT I picked it, along with Shein, found real usability problems on each, tested them, redesigned them and tested again.</p>
+<p>This case study covers MakeMyTrip. I found three problems: a search form that tries to show everything at once, fees that show up late, and no obvious way to compare flights.</p></div></section>
+
+<section class="sx" data-t="Problem"><p class="eb">Problem</p><h2>Three things that got in the way</h2>
+<div class="grid rv"><div class="card"><div class="num">01</div><b>An overwhelming booking flow</b><p>The search form is crowded with trip type, fare type, a GST field, price drop protection and promos, all competing with the main action.</p></div><div class="card"><div class="num">02</div><b>Hidden fees</b><p>Fees showed up late, so the price people saw first wasn’t always the price they ended up paying.</p></div><div class="card"><div class="num">03</div><b>Comparing flights</b><p>It wasn’t obvious where to click to compare flights side by side.</p></div></div></section>
+
+<section class="sx" data-t="Research"><p class="eb">Research</p><h2>What testing the original showed</h2>
+<div class="rv"><p>I started with a 5-second test on the original page: people see it briefly, then say what they remember. It shows what a page communicates before anyone has time to read it.</p></div>
+<div class="stats rv"><div><strong><span data-n="5">0</span>/5</strong><small>recognised it as a flight booking page</small></div><div><strong><span data-n="4">0</span>/5</strong><small>recalled specifics like the route, dates and the cheapest and fastest tags</small></div></div>
+<div class="rv"><p>So the page says what it is. The trouble starts when someone tries to use it. In think-aloud tests on the original site, people took 7:19, 5:21 and 6:12 to finish the booking task. In the first click test on the original page, people clicked unrelated areas and didn’t know what to do when asked where they would click to compare flights.</p></div>
+<div class="band rv"><p class="eb">What I took from it</p><p style="margin:0;font:800 22px/1.35 var(--d)">The page was clear about what it was. It was the amount competing for attention that slowed people down.</p></div></section>
+
+<section class="sx" data-t="Redesign"><p class="eb">Redesign</p><h2>Fixing each problem, then testing again</h2>
+<div class="rv"><p>For each problem I redesigned the screens in Figma and ran the same kind of test again on Lyssna, so I could compare before and after. Pick a problem, then drag the slider to compare.</p></div>
+<div class="tabs rv" id="tabs"></div><div class="sol rv" id="sol"></div></section>
+
+<section class="sx" data-t="Results"><p class="eb">Results</p><h2>Did it get better?</h2>
+<div class="rv"><h3>Faster to finish the task</h3><p>Time on task in the think-aloud tests dropped for every participant. These times are approximate.</p></div>
+<div class="race rv" id="race"></div>
+<div class="rv"><h3>Faster to find the right click</h3><p>In the first click test, 10 of 15 people clicked the right place on the redesign, and the average time dropped from 23 seconds to 12.</p></div>
+<div class="race rv" id="fc"></div>
+<div class="grid rv"><div class="card"><b>Hidden fees</b><p>All 3 participants said the final price matched what they expected, and rated their confidence 4, 5 and 4.</p></div><div class="card"><b>Tests I ran</b><p>5-second test on Lyssna with 17 responses. First click test with 15. Think-aloud with 3.</p></div></div></section>
+
+<section class="sx" data-t="Reflection"><p class="eb">Reflection</p><h2>What I take from this</h2>
+<div class="refl rv"><b>Feedback that shaped the second round</b><p>After my first presentation, my tutor asked me to annotate and highlight more, show what people do and do not notice, summarise the key findings, keep slides visual and less wordy, and explain a bit more about how MakeMyTrip works. I carried that into the redesign tests and the final presentation.</p></div>
+<div class="rv"><p class="todo">✎ Add what you would test differently next time, and what you would improve with more time.</p></div></section>
 </div></div>
-</main>
+<footer><b>Thank you.</b><p>Anvi Kashelikar · anvi6307@gmail.com</p></footer>
+</div>
 <script src="project2-script.js"></script>
 </body>
 </html>
