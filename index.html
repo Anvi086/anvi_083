@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Anvi's Portfolio</title>
 <meta name="description" content="Anvi's portfolio: selected projects, about me and how to get in touch.">
-<meta name="theme-color" content="#2338F5">
+<meta name="theme-color" content="#2a0d57">
 <meta property="og:title" content="Anvi's Portfolio">
 <meta property="og:description" content="Selected projects, about me and how to get in touch.">
 <meta property="og:type" content="website">
@@ -23,6 +23,7 @@
       <nav class="nav-links" aria-label="Primary">
         <a class="nl" href="#home" data-nav="home">Home</a>
         <a class="nl" href="#about-me" data-nav="about-me">About</a>
+        <a class="nl" href="#projects">Work</a>
       </nav>
       <button class="sun-btn" id="theme" type="button" aria-label="Switch between light and dark mode" title="Switch light / dark"></button>
       <nav class="nav-links r" aria-label="Secondary">
@@ -39,12 +40,25 @@
   <section id="home" class="hero" aria-label="Introduction">
     <div class="wrap">
       <div class="panel" id="heroPanel">
+        <i class="orb o1" aria-hidden="true"></i><i class="orb o2" aria-hidden="true"></i>
+        <div class="bigsun" id="bigSun" aria-hidden="true"></div>
+        <i class="spk s1" style="--k:46" aria-hidden="true"></i><i class="spk s2" style="--k:-30" aria-hidden="true"></i>
+        <i class="spk s3" style="--k:64" aria-hidden="true"></i><i class="spk s4" style="--k:-52" aria-hidden="true"></i>
         <div class="top mono"><span>Portfolio / 2026</span><span class="pill"><i></i>Open to opportunities</span></div>
         <h1 class="name" id="name" aria-label="Hello, I'm Anvi.">
           <span class="line" id="l1" aria-hidden="true"></span>
           <span class="line" id="l2" aria-hidden="true"></span>
         </h1>
+        <div class="role-row">
+          <span class="sr">Anvi is a UI designer, UX designer and creative.</span>
+          <div class="role" aria-hidden="true"><span id="role"></span><i class="caret"></i></div>
+        </div>
         <div class="tools" id="tools">
+          <div class="cta">
+            <a class="btn" href="#projects">View my work
+              <span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
+            <a class="btn-ghost" href="#contact">Get in touch</a>
+          </div>
           <button class="btn-ghost" id="scatter" type="button">Scatter
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M18.4 5.6l-2.8 2.8M8.4 15.6l-2.8 2.8"/></svg>
           </button>
@@ -58,9 +72,8 @@
   <section class="about" id="about-peek" aria-labelledby="about-h">
     <div class="wrap">
       <span class="mono" style="color:var(--dim)" id="about-h">A little about me</span>
-      <p class="statement" id="statement" style="margin-top:18px">Hi, I'm Anvi. I'm from *India* and I live in *Australia*. I aim to turn messy problems into clear, well-made things that people enjoy using, and I'm looking for a team where I can keep learning.</p>
+      <p class="statement" id="statement" style="margin-top:18px">Hi, I'm Anvi. I turn *messy* problems into *clear*, well-made things that people enjoy using, and I'm looking for a team where I can keep *learning*.</p>
       <div class="about-foot">
-        <div class="chips"><span class="chip">From India</span><span class="chip">Living in Australia</span><span class="chip">Open to opportunities</span></div>
         <a class="btn" href="#about-me">More about me
           <span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
         </a>
@@ -86,6 +99,7 @@
   <section class="contact" id="contact" aria-labelledby="contact-h">
     <div class="wrap">
       <div class="panel" id="contactPanel">
+        <i class="orb o1" aria-hidden="true"></i><i class="orb o2" aria-hidden="true"></i>
         <span class="mono">Contact</span>
         <h2 id="contact-h" aria-label="Say hello."><span id="chead" aria-hidden="true"></span></h2>
         <div class="links">
@@ -97,7 +111,7 @@
           <a class="lk wide" data-link="github" href="#"><span><span class="k mono">GitHub</span><span class="v">See my code</span></span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
         </div>
-        <div class="foot mono"><span>© 2026 Anvi</span><span>Based in Australia · Originally from India</span></div>
+        <div class="foot mono"><span>© 2026 Anvi</span><span>Built by hand with HTML, CSS and JavaScript</span></div>
       </div>
     </div>
   </section>
@@ -116,14 +130,12 @@
           <h1 id="ap-h">Hello, I'm <span>Anvi.</span></h1>
           <div class="ap-text">
             <p>I'm from India and I now live in Australia. Growing up in one country and building a life in another taught me to listen first, adapt quickly and explain things clearly to people who see the world differently from me.</p>
-            <p>I aim to turn messy, unclear problems into simple, well-made things that people enjoy using. I like to understand the people behind a problem before I start solving it, then test my ideas early and often.</p>
+            <p>I like to understand the people behind a problem before I start solving it, then test my ideas early and often.</p>
             <p>Right now I'm looking for a team that cares about its craft, where I can keep learning and contribute from my first week.</p>
           </div>
           <dl class="facts">
-            <div><dt class="mono">From</dt><dd>India</dd></div>
-            <div><dt class="mono">Based in</dt><dd>Australia</dd></div>
-            <div><dt class="mono">Looking for</dt><dd>Graduate and junior roles, internships</dd></div>
-            <div><dt class="mono">Status</dt><dd>Open to opportunities</dd></div>
+            <div><dt class="mono">Looking for</dt><dd>UX/UI internships, graduate and junior roles</dd></div>
+            <div><dt class="mono">I work on</dt><dd>Research, interface design and front-end builds</dd></div>
           </dl>
         </div>
       </div>

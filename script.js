@@ -2,10 +2,10 @@
   /* ============ EDIT YOUR DETAILS HERE ============ */
   var LINKS={
     email:'anvi6307@gmail.com',
-    linkedin:'https://www.linkedin.com/in/anvi-kashelikar/',
-    resume: 'assets/Anvi_Kashelikar_Resume.pdf',
+    linkedin:'https://www.linkedin.com/in/your-name',
+    resume:'assets/Anvi-Resume.pdf',
     github:'https://github.com/Anvi086',
-    photo:'assets/photo.jpg'
+    photo:''
   };
   /* link = the case study page that opens when the project is clicked in the book */
   var PROJECTS=[
@@ -48,7 +48,8 @@
     return '<svg viewBox="-80 -80 160 160" aria-hidden="true" fill="'+fill+'">'+rays+'<circle r="27"/></svg>';
   }
   $('theme').innerHTML=sun('var(--sun)');
-  $('photoSun').innerHTML=sun('#D4FF4F');
+  $('photoSun').innerHTML=sun('#FFC23D');
+  $('bigSun').innerHTML=sun('#FFC23D');
   var navSun=$('theme').firstChild,ticking=false;
   addEventListener('scroll',function(){
     if(ticking||reduce)return;ticking=true;
@@ -79,7 +80,7 @@
 
   /* Ticker: greetings in the languages of my two homes */
   (function(){
-    var words=['Hello','Namaste','G’day','Hello','Namaste','G’day'],s='';
+    var words=['UX research','Interface design','Prototyping','Front-end builds','Testing with people','Storytelling'],s='';
     for(var r=0;r<2;r++)words.forEach(function(w){s+='<span>'+w+sun('#0F1420')+'</span>'});
     $('track').innerHTML=s;
   })();
@@ -178,7 +179,29 @@
     heroL.forEach(function(o){o.vx=(Math.random()-.5)*50;o.vy=-14-Math.random()*28});
     wake();
   });
-  if(reduce){$('tools').style.display='none'}
+  if(reduce){$('scatter').style.display='none'}
+
+  /* Role line: types a word, deletes it, types the next */
+  (function(){
+    var el=$('role'),W=['UI designer','UX designer','Creative','Researcher','Front-end builder'],wi=0,n=0,del=false;
+    if(reduce){el.textContent=W[0];return}
+    function tick(){
+      var w=W[wi],d=del?40:85;
+      el.textContent=w.slice(0,n);
+      if(!del&&n===w.length){del=true;d=1500}
+      else if(del&&n===0){del=false;wi=(wi+1)%W.length;d=380}
+      else n+=del?-1:1;
+      setTimeout(tick,d);
+    }
+    tick();
+  })();
+  /* Sparkles drift with the cursor */
+  panel.addEventListener('pointermove',function(e){
+    if(reduce||e.pointerType==='touch')return;
+    var r=panel.getBoundingClientRect();
+    panel.style.setProperty('--px',((e.clientX-r.left)/r.width-.5).toFixed(3));
+    panel.style.setProperty('--py',((e.clientY-r.top)/r.height-.5).toFixed(3));
+  });
 
   /* Contact heading reacts to the cursor with weight and colour */
   var cp=$('contactPanel');
@@ -275,7 +298,7 @@
     leaves.push({el:el,front:el.querySelector('.front'),back:el.querySelector('.back')});
     setZ(k,false);
   }
-  mkLeaf('<button class="face front cover" type="button" aria-label="Open the projects book"><span class="cover-in"><span class="cover-sun">'+sun('#0F1420')+'</span>'+
+  mkLeaf('<button class="face front cover" type="button" aria-label="Open the projects book"><span class="cover-in"><span class="cover-sun">'+sun('#FFD27A')+'</span>'+
     '<span><h3>Projects</h3><p class="sub mono">Selected work · 2025–26</p></span>'+
     '<span class="open-me">Open me<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v15M6 13l6 6 6-6"/></svg></span></span></button>',
     '<div class="face back">'+artPane(0)+'</div>');
