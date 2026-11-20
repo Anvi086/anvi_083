@@ -17,9 +17,21 @@ strip.addEventListener('dragleave',()=>strip.classList.remove('over'));
 strip.addEventListener('drop',e=>{e.preventDefault();strip.classList.remove('over');const i=parseInt(e.dataTransfer.getData('text/plain'),10);if(!isNaN(i)&&C[i])apply(i)});
 apply(4);
 
-/* hero strip photos: milo1, milo2, milo3 in /assets (tries each file type until one loads) */
-const EXT=['jpg','jpeg','png','webp'];
-$$('#strip img[data-src]').forEach(img=>{let k=0;const next=()=>{if(k<EXT.length)img.src=`../assets/${img.dataset.src}.${EXT[k++]}`};img.onerror=next;next()});
+/* hero strip photos: loads from /assets.
+   data-src can be a bare name ("Milo1") or a full path ("../assets/Milo1.jpg").
+   Either way, only the base name is used and each file type is tried until one loads.
+   Upper case extensions are included because GitHub Pages is case sensitive. */
+const EXT=['jpg','jpeg','png','webp','JPG','JPEG','PNG','WEBP'];
+$$('#strip img[data-src]').forEach(img=>{
+  const base=img.dataset.src.replace(/^.*\//,'').replace(/\.[^.]+$/,'');
+  let k=0;
+  const next=()=>{
+    if(k<EXT.length){img.src=`../assets/${base}.${EXT[k++]}`}
+    else{img.onerror=null;console.warn('Could not load photo:',base)}
+  };
+  img.onerror=next;
+  next();
+});
 
 /* sketch / mock up tabs (images are in /assets, one level up from /project4) */
 const SH=[{src:'../assets/Sketch.png',alt:'Hand-drawn sketch of the photobooth layout: frame colours on the left, the strip in the middle, stickers on the right, and an upload image button underneath',cap:'First sketch. Arrows note the two drags: colour to frame, sticker to anywhere on the strip.'},
