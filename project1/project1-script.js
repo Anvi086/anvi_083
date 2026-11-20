@@ -1,31 +1,33 @@
+/* Image paths are relative to /project1, so they go up one level into /assets.
+   Spaces in file names are written as %20. */
 const IM={
- "welcome": "assets/welcome.webp",
- "home": "assets/home.webp",
- "myki": "assets/myki.webp",
- "community": "assets/community.webp",
- "map": "assets/map.webp",
- "events": "assets/events.webp",
- "budget": "assets/budget.webp",
- "profile": "assets/profile.webp",
- "icon": "assets/icon.webp",
- "sanika": "assets/sanika.jpg",
- "aarav": "assets/aarav.jpg",
- "eco": "assets/eco.jpg",
- "flow": "assets/flow.jpg",
- "thematic": "assets/thematic.jpg",
- "comm": "assets/comm.jpg",
- "sk1": "assets/sk1.jpg",
- "sk2": "assets/sk2.jpg",
- "sk3": "assets/sk3.jpg",
- "mood": "assets/mood.jpg",
- "palette": "assets/palette.jpg",
- "figma": "assets/figma.jpg"
+ "welcome": "../assets/landing%20page.png",
+ "home": "../assets/Home%20page.png",
+ "community": "../assets/community.png",
+ "map": "../assets/map%20.png",
+ "events": "../assets/events.png",
+ "icon": "../assets/icon.png",
+ "sanika": "../assets/Sanika.jpg",
+ "aarav": "../assets/Aarav.jpg",
+ "eco": "../assets/ecosystem-map.png",
+ "flow": "../assets/flows.png",
+ "thematic": "../assets/Thematic-Analysis.png",
+ "comm": "../assets/Existing-communities.png",
+ "sk1": "../assets/wireframe1.png",
+ "sk2": "../assets/wireframe2.png",
+ "sk3": "../assets/wireframe3.png",
+ "mood": "../assets/moodboard.png"
 };
-const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const $=s=>document.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
 const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches,root=document.documentElement;
 try{const t=localStorage.getItem('anvi-theme');if(t)root.dataset.theme=t}catch(e){}
 $('#th').onclick=()=>{const d=root.dataset.theme?root.dataset.theme==='dark':matchMedia('(prefers-color-scheme:dark)').matches;root.dataset.theme=d?'light':'dark';try{localStorage.setItem('anvi-theme',root.dataset.theme)}catch(e){}};
 $$('[data-im]').forEach(i=>i.src=IM[i.dataset.im]);
+
+/* budget and profile screens: tries each file type until one loads */
+const BASE={budget:'../assets/budget',profile:'../assets/profile'};
+const EXT=['png','jpg','jpeg','webp'];
+function loadBase(scope){$$('img[data-base]',scope).forEach(img=>{let k=0;const next=()=>{if(k<EXT.length)img.src=`${img.dataset.base}.${EXT[k++]}`};img.onerror=next;next()})}
 
 /* data */
 const PERS={sanika:{n:'Sanika',t:'The Community Seeker',m:'21 · Bachelors, Architecture · Shared housing with flatmates',q:'I wish someone had just told me where to start.',tg:['Sociable','Nostalgic','Organised','Trusting'],g:['Build real, ongoing connection with other Maharashtrian students','Access trustworthy guidance instead of learning things the hard way','Keep cultural traditions alive: food, language, festivals'],f:['No single reliable source for accommodation, jobs or events','Wishes she had known the real cost of living before arriving','Finds it hard to meet Maharashtrian students specifically'],c:'WhatsApp groups, Instagram, RMIT Indian Club'},
@@ -35,7 +37,8 @@ const INS=['Students turn to friends, flatmates and family before official unive
 const QS=[['It is always better when people who have experienced the similar things tell you upfront rather than going through the information from scratch online.','Interviewee, around six months in Melbourne'],['I wish I knew how difficult it would be to make new friends and build a social circle here.','Interviewee, Master’s student'],['I will create a Maharashtrian student community platform: an information exchange for jobs, events, useful places, accommodation and transport.','Interviewee, Master’s student, one to two months in Melbourne']];
 const PS=[['Sanika','Sanika needs a way to find one trustworthy place for practical guidance and real Maharashtrian community, as she has relied on luck and scattered chats to learn the basics, like the real cost of living, the hard way.'],['Aarav','Aarav needs a way to sort out everyday essentials and find familiar food and community on his own, as he would rather figure things out himself than ask for help, and sees no easy way in.'],['New students','New Maharashtrian students at RMIT need one consolidated, trustworthy source for settling-in information and community, as they piece it together alone from Google, ChatGPT, Instagram and WhatsApp.'],['New students','New Maharashtrian students at RMIT need an easy, low-pressure way to find their community, whether they’re outgoing like Sanika or independent like Aarav, because meeting people at the moment comes down to luck.']];
 const COL=[['Dark maroon','#560104','#faf1e0'],['Rust','#ba3c16','#fff'],['Spice orange','#c66a05','#fff'],['Saffron','#f8ca1d','#3a0a06'],['Cream','#faf1e0','#3a0a06']];
-const F=[{t:'Settling-In Essentials',w:'aarav',n:['Need 2: sort everyday essentials and find familiar food and community on his own','Need 3: one consolidated source for settling-in information'],h:'How might we help new students know where to start and get the basics sorted quickly, on their own?',s:'A step-by-step checklist with progress tracking and short guides.',a:['Progress tracker shows how many basics are done','Up next: a short guide, like getting your myki','Checklist for phone, bank, groceries and student ID','Mark as done moves you to the next item'],i:['home','myki']},
+/* i = screens shown for each feature (an empty list hides the screen panel) */
+const F=[{t:'Settling-In Essentials',w:'aarav',n:['Need 2: sort everyday essentials and find familiar food and community on his own','Need 3: one consolidated source for settling-in information'],h:'How might we help new students know where to start and get the basics sorted quickly, on their own?',s:'A step-by-step checklist with progress tracking and short guides.',a:['Progress tracker shows how many basics are done','Up next: a short guide, like getting your myki','Checklist for phone, bank, groceries and student ID','Mark as done moves you to the next item'],i:['home']},
 {t:'Community Advice',w:'sanika',n:['Need 1: one trustworthy place for practical guidance and real community','Need 3: one consolidated source for settling-in information'],h:'How might we give students trustworthy advice from people who have been through it, instead of scattered chats and guesswork?',s:'A feed of advice from current students, filtered by housing, food, jobs, events and groceries.',a:['Filter by housing, food, jobs, events or groceries','Real answers from students, with their course and time in Melbourne'],i:['community']},
 {t:'Store & Restaurant Map',w:'aarav',n:['Need 2: sort everyday essentials and find familiar food and community on his own'],h:'How might we help students find familiar, affordable food near them without having to ask around?',s:'An interactive map of Indian grocery stores and restaurants, with distance and opening hours.',a:['Search and filter by restaurants, grocery or veg','Near-you list with distance and opening hours'],i:['map']},
 {t:'Events',w:'aarav',n:['Need 4: an easy, low-pressure way to find community, not luck'],h:'How might we make it easy for students to find their people and plans, without relying on luck or what shows up in their feed?',s:'An events page for festivals and meetups, with filters and how many people are going.',a:['Filter by this month, festivals or meetups','Meetups for new arrivals, with how many are going'],i:['events']},
@@ -53,7 +56,7 @@ const persona=k=>{const p=PERS[k];$('#persona').innerHTML=`<div class="pers"><im
 $('#ps').innerHTML=PS.map(([w,t],i)=>`<div class="card"><div class="num">0${i+1}</div><b>${w}</b><p>${t}</p></div>`).join('');
 $('#sw').innerHTML=COL.map(([n,h,c])=>`<button style="background:${h};color:${c}" data-c="${h}">${n}<br>${h}</button>`).join('');
 $('#ftabs').innerHTML=F.map((f,i)=>`<button class="${i?'':'on'}" data-f="${i}">${f.t}</button>`).join('');
-const feat=i=>{const f=F[i];$('#fx').innerHTML=`<div class="pv">${f.i.map(k=>`<img src="${IM[k]}" alt="${f.t} screen">`).join('')}</div><div><div class="who"><img src="${IM[f.w]}" alt=""> Solves for ${PERS[f.w].n}</div>${f.n.map(x=>`<span class="pill">${x}</span>`).join('')}<p class="hmw">${f.h}</p><p><b>Solution.</b> ${f.s}</p><ul>${f.a.map(x=>`<li>${x}</li>`).join('')}</ul></div>`};feat(0);
+const feat=i=>{const f=F[i];$('#fx').classList.toggle('noimg',!f.i.length);$('#fx').innerHTML=`${f.i.length?`<div class="pv">${f.i.map(k=>IM[k]?`<img src="${IM[k]}" alt="${f.t} screen">`:`<img data-base="${BASE[k]}" alt="${f.t} screen">`).join('')}</div>`:''}<div><div class="who"><img src="${IM[f.w]}" alt=""> Solves for ${PERS[f.w].n}</div>${f.n.map(x=>`<span class="pill">${x}</span>`).join('')}<p class="hmw">${f.h}</p><p><b>Solution.</b> ${f.s}</p><ul>${f.a.map(x=>`<li>${x}</li>`).join('')}</ul></div>`;loadBase($('#fx'))};feat(0);
 const BEFORE=[['Lands in Melbourne','hl'],['Googles it'],['Asks ChatGPT'],['Scrolls Instagram'],['Joins WhatsApp groups'],['Conflicting, scattered answers','ac'],['Meets people by luck and learns costs the hard way','ac']];
 const AFTER=[['ghar.','hl'],['Settling-in essentials: checklist and short guides'],['Community advice: answers from students like you'],['Budget: know your weekly costs'],['Store and restaurant map: find familiar food nearby'],['Events: meet new people easily']];
 const ba=m=>{const A=m==='b'?BEFORE:AFTER;$('#ba').innerHTML=`<p class="eb">Before and after</p><div class="tabs"><button class="${m==='b'?'on':''}" data-b="b">Before ghar.</button><button class="${m==='a'?'on':''}" data-b="a">With ghar.</button></div><p>${m==='b'?'Sanika relied on flatmates and WhatsApp groups, met other Maharashtrian students by luck, and learned the real cost of living only after she arrived.':'With ghar., Sanika has one place for the basics, advice from students like her and meetups to join, so finding community no longer depends on luck.'}</p><div class="fl">${A.map((n,i)=>`<span class="nd ${n[1]||''}" style="animation-delay:${i*70}ms">${n[0]}</span>${i<A.length-1&&m==='b'?'<span class="ar">→</span>':''}`).join('')}</div>`};ba('b');

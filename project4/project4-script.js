@@ -17,10 +17,14 @@ strip.addEventListener('dragleave',()=>strip.classList.remove('over'));
 strip.addEventListener('drop',e=>{e.preventDefault();strip.classList.remove('over');const i=parseInt(e.dataTransfer.getData('text/plain'),10);if(!isNaN(i)&&C[i])apply(i)});
 apply(4);
 
-/* sketch / mock up tabs */
-const SH=[{src:'img/sketch.jpg',alt:'Hand-drawn sketch of the photobooth layout: frame colours on the left, the strip in the middle, stickers on the right, and an upload image button underneath',cap:'First sketch. Arrows note the two drags: colour to frame, sticker to anywhere on the strip.',w:1800,h:1066},
-{src:'img/mockup.jpg',alt:'Photobooth mock up with nine frame colour circles, a navy photo strip with three dog photos, and a panel of stickers',cap:'Mock up. Nine frame colours, the strip with its pre-loaded photos, and a sticker panel.',w:1800,h:1166}];
-function shot(i){const s=SH[i];$('#shot').innerHTML=`<img class="zoom" tabindex="0" src="${s.src}" alt="${s.alt}" width="${s.w}" height="${s.h}"><figcaption>${s.cap} Click to enlarge.</figcaption>`;$$('#tabs button').forEach((b,j)=>{b.classList.toggle('on',j===i);b.setAttribute('aria-selected',j===i)})}
+/* hero strip photos: milo1, milo2, milo3 in /assets (tries each file type until one loads) */
+const EXT=['jpg','jpeg','png','webp'];
+$$('#strip img[data-src]').forEach(img=>{let k=0;const next=()=>{if(k<EXT.length)img.src=`../assets/${img.dataset.src}.${EXT[k++]}`};img.onerror=next;next()});
+
+/* sketch / mock up tabs (images are in /assets, one level up from /project4) */
+const SH=[{src:'../assets/Sketch.png',alt:'Hand-drawn sketch of the photobooth layout: frame colours on the left, the strip in the middle, stickers on the right, and an upload image button underneath',cap:'First sketch. Arrows note the two drags: colour to frame, sticker to anywhere on the strip.'},
+{src:'../assets/Mockup.png',alt:'Photobooth mock up with nine frame colour circles, a navy photo strip with three dog photos, and a panel of stickers',cap:'Mock up. Nine frame colours, the strip with its pre-loaded photos, and a sticker panel.'}];
+function shot(i){const s=SH[i];$('#shot').innerHTML=`<img class="zoom" tabindex="0" src="${s.src}" alt="${s.alt}"><figcaption>${s.cap} Click to enlarge.</figcaption>`;$$('#tabs button').forEach((b,j)=>{b.classList.toggle('on',j===i);b.setAttribute('aria-selected',j===i)})}
 $('#tabs').addEventListener('click',e=>{const b=e.target.closest('button');if(b)shot(+b.dataset.i)});shot(0);
 
 /* lightbox */
@@ -35,3 +39,6 @@ $('#side').addEventListener('click',e=>{const b=e.target.closest('[data-s]');if(
 const spy=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)$$('#side button').forEach(b=>b.classList.toggle('on',b.dataset.s===e.target.id))}),{rootMargin:'-35% 0px -60% 0px'});
 $$('.sx').forEach(s=>spy.observe(s));
 addEventListener('scroll',()=>{$('#pg').style.width=scrollY/Math.max(1,document.documentElement.scrollHeight-innerHeight)*100+'%'},{passive:true});
+
+/* show the finished-booth screenshot only if img/final.png exists */
+(function(){const i=new Image();i.onload=()=>{const f=$('#finalimg');f.src=i.src;f.width=i.width;f.height=i.height;$('#finalfig').hidden=false};i.src='img/final.png'})();

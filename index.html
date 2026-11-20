@@ -17,54 +17,45 @@
 </head>
 <body>
 
-<header class="nav">
-  <div class="wrap">
-    <div class="bar">
-      <nav class="nav-links" aria-label="Primary">
-        <a class="nl" href="#home" data-nav="home">Home</a>
-        <a class="nl" href="#about-me" data-nav="about-me">About</a>
-        <a class="nl" href="#projects">Work</a>
-      </nav>
-      <button class="sun-btn" id="theme" type="button" aria-label="Switch between light and dark mode" title="Switch light / dark"></button>
-      <nav class="nav-links r" aria-label="Secondary">
-        <a class="nl" data-link="resume" href="#contact">Resume</a>
-        <a class="nl" href="#contact" data-nav="contact">Contact</a>
-      </nav>
-    </div>
-  </div>
-</header>
+<header class="nav"><div class="wrap"><div class="bar">
+  <div class="brand"><button class="sun-btn" id="theme" type="button" aria-label="Switch between light and dark mode" title="Switch light / dark"></button><a class="wm" href="#home" data-nav="home">Anvi</a></div>
+  <nav class="pills-nav" aria-label="Primary">
+    <a class="pn c1" href="#projects">Work</a>
+    <a class="pn c2" href="#about-me" data-nav="about-me">About</a>
+    <a class="pn c3" href="#contact" data-nav="contact">Contact</a>
+  </nav>
+</div></div></header>
 
 <main>
 <!-- HOME VIEW -->
 <div id="view-home">
   <section id="home" class="hero" aria-label="Introduction">
-    <div class="wrap">
-      <div class="panel" id="heroPanel">
-        <i class="orb o1" aria-hidden="true"></i><i class="orb o2" aria-hidden="true"></i>
-        <div class="bigsun" id="bigSun" aria-hidden="true"></div>
-        <i class="spk s1" style="--k:46" aria-hidden="true"></i><i class="spk s2" style="--k:-30" aria-hidden="true"></i>
-        <i class="spk s3" style="--k:64" aria-hidden="true"></i><i class="spk s4" style="--k:-52" aria-hidden="true"></i>
-        <div class="top mono"><span>Portfolio / 2026</span><span class="pill"><i></i>Open to opportunities</span></div>
-        <h1 class="name" id="name" aria-label="Hello, I'm Anvi.">
-          <span class="line" id="l1" aria-hidden="true"></span>
-          <span class="line" id="l2" aria-hidden="true"></span>
-        </h1>
-        <div class="role-row">
-          <span class="sr">Anvi is a UI designer, UX designer and creative.</span>
-          <div class="role" aria-hidden="true"><span id="role"></span><i class="caret"></i></div>
-        </div>
-        <div class="tools" id="tools">
-          <div class="cta">
-            <a class="btn" href="#projects">View my work
-              <span class="dot"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
-            <a class="btn-ghost" href="#contact">Get in touch</a>
+    <div class="wrap"><div class="hero-in" id="heroPanel">
+      <p class="mono eyebrow">Portfolio / 2026</p>
+      <h1 class="name" id="name" aria-label="Hello, I'm Anvi.">
+        <span class="line" id="l1" aria-hidden="true"></span><span class="line" id="l2" aria-hidden="true"></span>
+      </h1>
+
+      <div class="stage">
+        <div class="sunny-side">
+          <div class="role-row">
+            <span class="sr">Anvi is a UI designer, UX designer and creative.</span>
+            <div class="role" aria-hidden="true"><span id="role"></span><i class="caret"></i></div>
           </div>
-          <button class="btn-ghost" id="scatter" type="button">Scatter
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M18.4 5.6l-2.8 2.8M8.4 15.6l-2.8 2.8"/></svg>
-          </button>
+
+          <div class="sunny">
+            <div class="mascot" id="mascot" aria-hidden="true"></div>
+            <div class="bubble" id="bubble">
+              <span class="btag">SUNNY</span>
+              <span class="sr" id="sayFull" aria-live="polite"></span>
+              <p id="sayText" aria-hidden="true"></p>
+              <div class="bfoot"><div class="bdots" id="sayDots" role="group" aria-label="Choose a message"></div><span class="mono" id="sayN"></span><button type="button" class="bnext" id="sayNext" aria-label="Next message">&#9654;</button></div>
+            </div>
+          </div>
         </div>
+        
       </div>
-    </div>
+    </div></div>
   </section>
 
   <div class="band" aria-hidden="true"><div class="tilt"><div class="track" id="track"></div></div></div>
@@ -153,6 +144,14 @@
   </section>
 </div>
 </main>
+
+<div class="dock" aria-label="Quick links">
+  <span class="live"><i></i><b>Open to UX/UI internships</b></span>
+  <a class="ib i1" data-link="email" href="#" aria-label="Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18v12H3z"/><path d="M3 7l9 7 9-7"/></svg></a>
+  <a class="ib i2" data-link="linkedin" href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 10v8M6 6.5v.01M10.5 18v-8M10.5 13.5c0-2.2 1.6-3.7 3.8-3.7 2.2 0 3.2 1.4 3.2 3.7V18"/></svg></a>
+  <a class="ib i3" data-link="resume" href="#" aria-label="Resume"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4M10 12h5M10 16h5"/></svg></a>
+  <a class="ib i4" data-link="github" href="#" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 8l-4 4 4 4M15 8l4 4-4 4"/></svg></a>
+</div>
 
 <script src="script.js"></script>
 </body>

@@ -10,7 +10,7 @@
 </head>
 <body>
 <div id="pg"></div>
-<header><b>Anvi Kashelikar</b><a class="back" href="../index.html#projects">← Back to portfolio</a><button id="th" aria-label="Toggle light and dark">◐ Theme</button></header>
+<header><a class="brand" href="../index.html" aria-label="Anvi Kashelikar, back to portfolio home"><b>Anvi Kashelikar</b></a><button id="th" aria-label="Toggle light and dark">◐ Theme</button></header>
 <div class="wrap">
 <section>
 <p class="eb">Principles Project · RMIT · 2026</p>
@@ -36,9 +36,12 @@
 <div class="grid rv"><div class="card"><div class="num">01</div><b>An overwhelming booking flow</b><p>The search form is crowded with trip type, fare type, a GST field, price drop protection and promos, all competing with the main action.</p></div><div class="card"><div class="num">02</div><b>Hidden fees</b><p>Fees showed up late, so the price people saw first wasn’t always the price they ended up paying.</p></div><div class="card"><div class="num">03</div><b>Comparing flights</b><p>It wasn’t obvious where to click to compare flights side by side.</p></div></div></section>
 
 <section class="sx" data-t="Research"><p class="eb">Research</p><h2>What testing the original showed</h2>
-<div class="rv"><p>I started with a 5-second test on the original page: people see it briefly, then say what they remember. It shows what a page communicates before anyone has time to read it.</p></div>
-<div class="stats rv"><div><strong><span data-n="5">0</span>/5</strong><small>recognised it as a flight booking page</small></div><div><strong><span data-n="4">0</span>/5</strong><small>recalled specifics like the route, dates and the cheapest and fastest tags</small></div></div>
-<div class="rv"><p>So the page says what it is. The trouble starts when someone tries to use it. In think-aloud tests on the original site, people took 7:19, 5:21 and 6:12 to finish the booking task. In the first click test on the original page, people clicked unrelated areas and didn’t know what to do when asked where they would click to compare flights.</p></div>
+<div class="rv"><h3>5-second test</h3><p>I started with a 5-second test on the original page with 15 people on Lyssna. They see the page briefly, then say what they remember. It shows what a page communicates before anyone has time to read it.</p></div>
+<div class="stats rv"><div><strong><span data-n="15">0</span>/15</strong><small>recognised it as a flight booking page</small></div><div><strong><span data-n="8">0</span>/15</strong><small>remembered trip details like the route, dates or the cheapest and fastest tags</small></div><div><strong><span data-n="2">0</span>/15</strong><small>remembered the clutter, like smart filters or price protection</small></div></div>
+<div class="rv"><p>So the page says what it is. Almost everyone remembered the trip itself, and hardly anyone remembered the features crowding the search form.</p></div>
+<div class="rv"><h3>First click test</h3><p>I then asked 15 people on the original page what they were looking for when they clicked, after being asked where they would click to compare flights.</p></div>
+<div class="stats rv"><div><strong><span data-n="10">0</span>/15</strong><small>were looking for a way to compare flights, like times, prices or all the options</small></div><div><strong><span data-n="1">0</span>/15</strong><small>expected clicking the price to show more options</small></div><div><strong><span data-n="4">0</span>/15</strong><small>had no clear goal, such as choosing a destination or working out what the site is</small></div></div>
+<div class="rv"><p>In think-aloud tests on the original site, people took 7:19, 5:21 and 6:12 to finish the booking task. Most people knew what they wanted, but nothing on the page showed them how to get it.</p></div>
 <div class="band rv"><p class="eb">What I took from it</p><p style="margin:0;font:800 22px/1.35 var(--d)">The page was clear about what it was. It was the amount competing for attention that slowed people down.</p></div></section>
 
 <section class="sx" data-t="Redesign"><p class="eb">Redesign</p><h2>Fixing each problem, then testing again</h2>
@@ -48,14 +51,30 @@
 <section class="sx" data-t="Results"><p class="eb">Results</p><h2>Did it get better?</h2>
 <div class="rv"><h3>Faster to finish the task</h3><p>Time on task in the think-aloud tests dropped for every participant. These times are approximate.</p></div>
 <div class="race rv" id="race"></div>
-<div class="rv"><h3>Faster to find the right click</h3><p>In the first click test, 10 of 15 people clicked the right place on the redesign, and the average time dropped from 23 seconds to 12.</p></div>
+<div class="rv"><h3>Faster to find the right click</h3><p>In the first click test, 10 of 15 people clicked the right place on the redesign, and the average time dropped from 23 seconds to 12. On the original, 10 of 15 were looking for a way to compare flights, but nothing showed them where it was.</p></div>
 <div class="race rv" id="fc"></div>
-<div class="grid rv"><div class="card"><b>Hidden fees</b><p>All 3 participants said the final price matched what they expected, and rated their confidence 4, 5 and 4.</p></div><div class="card"><b>Tests I ran</b><p>5-second test on Lyssna with 17 responses. First click test with 15. Think-aloud with 3.</p></div></div></section>
+<div class="grid rv"><div class="card"><b>Hidden fees</b><p>All 3 participants said the final price matched what they expected, and rated their confidence 4, 5 and 4.</p></div><div class="card"><b>Tests I ran</b><p>5-second test on Lyssna with 15 responses on the original and 17 on the redesign. First click test with 15 on each. Think-aloud with 3.</p></div></div></section>
+
+<section class="sx" data-t="Outcomes"><p class="eb">Outcomes</p><h2>What changed for each problem</h2>
+<div class="grid out rv">
+<div class="card"><p class="eb">Problem 1</p><div class="num">Scattered → focused</div><p>Attention moved from the dates and filters to the flight. All 15 still knew what the site was for.</p></div>
+<div class="card"><p class="eb">Problem 2</p><div class="num">6:17 → 3:15</div><p>Average time on task. Price confidence rose from 2.7 to 4.3 out of 5, and 3 of 3 said the final price matched.</p></div>
+<div class="card"><p class="eb">Problem 3</p><div class="num">23s → 12s</div><p>Time to click. 10 of 15 knew where to click to compare flights.</p></div>
+</div>
+<div class="band rv"><p class="eb">Takeaway</p><p style="margin:0;font:800 22px/1.35 var(--d)">Taking noise out and making the key action or price obvious helped people reach their goal faster and with more confidence.</p></div></section>
 
 <section class="sx" data-t="Reflection"><p class="eb">Reflection</p><h2>What I take from this</h2>
-<div class="refl rv"><b>Feedback that shaped the second round</b><p>After my first presentation, my tutor asked me to annotate and highlight more, show what people do and do not notice, summarise the key findings, keep slides visual and less wordy, and explain a bit more about how MakeMyTrip works. I carried that into the redesign tests and the final presentation.</p></div>
-<div class="rv"><p class="todo">✎ Add what you would test differently next time, and what you would improve with more time.</p></div></section>
+<div class="grid rv">
+<div class="card"><b>What went well</b><p>Every redesign decision traced back to a problem I had recorded and a principle behind it, and I tested each one with numbers.</p></div>
+<div class="card"><b>What I learned</b><p>Every design choice needs a reason. Krug, Nielsen and Johnson gave me one for each change, so I removed noise and made the key action obvious.</p></div>
+<div class="card"><b>What I would change</b><p>Test with more people, use the same number of testers for the original and the redesign, and test the compare feature on mobile.</p></div>
+</div></section>
+
 </div></div>
+<nav class="pager" aria-label="More projects">
+<a class="prev" href="../project1/project1.html" rel="prev"><small>← Previous project</small><b>ghar.</b></a>
+<a class="next" href="../project3/project3.html" rel="next"><small>Next project →</small><b>Milky Way</b></a>
+</nav>
 <footer><b>Thank you.</b><p>Anvi Kashelikar · anvi6307@gmail.com</p></footer>
 </div>
 <script src="project2-script.js"></script>

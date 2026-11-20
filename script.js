@@ -3,9 +3,9 @@
   var LINKS={
     email:'anvi6307@gmail.com',
     linkedin:'https://www.linkedin.com/in/your-name',
-    resume:'assets/Anvi-Resume.pdf',
+    resume:'assets/AnviKashelikar_Resume.pdf',
     github:'https://github.com/Anvi086',
-    photo:''
+    photo:'assets/Anvi.jpeg'
   };
   /* link = the case study page that opens when the project is clicked in the book */
   var PROJECTS=[
@@ -49,7 +49,6 @@
   }
   $('theme').innerHTML=sun('var(--sun)');
   $('photoSun').innerHTML=sun('#FFC23D');
-  $('bigSun').innerHTML=sun('#FFC23D');
   var navSun=$('theme').firstChild,ticking=false;
   addEventListener('scroll',function(){
     if(ticking||reduce)return;ticking=true;
@@ -67,7 +66,7 @@
   /* Links and email */
   document.querySelectorAll('[data-link]').forEach(function(a){
     var k=a.getAttribute('data-link');
-    if(LINKS[k]){a.setAttribute('href',LINKS[k]);a.setAttribute('target','_blank');a.setAttribute('rel','noopener')}
+    if(LINKS[k]){if(k==='email'){a.setAttribute('href','mailto:'+LINKS[k])}else{a.setAttribute('href',LINKS[k]);a.setAttribute('target','_blank');a.setAttribute('rel','noopener')}}
   });
   $('emailText').innerHTML='<a href="mailto:'+LINKS.email+'">'+LINKS.email+'</a>';
   if(LINKS.photo){var ph=document.querySelector('.photo');if(ph)ph.innerHTML='<img src="'+LINKS.photo+'" alt="Photo of Anvi">'}
@@ -78,7 +77,7 @@
     try{navigator.clipboard.writeText(LINKS.email).then(function(){done('Copied')},sel)}catch(e){sel()}
   });
 
-  /* Ticker: greetings in the languages of my two homes */
+  /* Ticker */
   (function(){
     var words=['UX research','Interface design','Prototyping','Front-end builds','Testing with people','Storytelling'],s='';
     for(var r=0;r<2;r++)words.forEach(function(w){s+='<span>'+w+sun('#0F1420')+'</span>'});
@@ -175,11 +174,6 @@
   }
   panel.addEventListener('pointerup',release);
   panel.addEventListener('pointercancel',release);
-  $('scatter').addEventListener('click',function(){
-    heroL.forEach(function(o){o.vx=(Math.random()-.5)*50;o.vy=-14-Math.random()*28});
-    wake();
-  });
-  if(reduce){$('scatter').style.display='none'}
 
   /* Role line: types a word, deletes it, types the next */
   (function(){
@@ -195,13 +189,6 @@
     }
     tick();
   })();
-  /* Sparkles drift with the cursor */
-  panel.addEventListener('pointermove',function(e){
-    if(reduce||e.pointerType==='touch')return;
-    var r=panel.getBoundingClientRect();
-    panel.style.setProperty('--px',((e.clientX-r.left)/r.width-.5).toFixed(3));
-    panel.style.setProperty('--py',((e.clientY-r.top)/r.height-.5).toFixed(3));
-  });
 
   /* Contact heading reacts to the cursor with weight and colour */
   var cp=$('contactPanel');
@@ -373,6 +360,37 @@
     if(e.key==='ArrowRight'&&cur<N-1)go(cur+1);
     if(e.key==='ArrowLeft')go(cur-1);
   });
+
+  /* Sunny, the character: face, eyes that follow the cursor, and a chatty speech bubble */
+  (function(){
+    var rays='';
+    for(var i=0;i<12;i++){var L=i%2===0?38:22,w=i%2===0?8:6,R=34;
+      rays+='<path d="M'+(-w)+','+(-R)+' C'+(-w-7)+','+(-R-L*.35)+' '+(w+2)+','+(-R-L*.65)+' 3,'+(-R-L)+' C'+(w+9)+','+(-R-L*.6)+' '+(w+7)+','+(-R-L*.25)+' '+w+','+(-R)+' Z" transform="rotate('+(i*30)+')"/>';}
+    $('mascot').innerHTML='<svg viewBox="-80 -80 160 160"><g fill="#FFC23D">'+rays+'<circle r="30"/></g>'+
+      '<circle cx="-11" cy="-5" r="8" fill="#fff"/><circle cx="11" cy="-5" r="8" fill="#fff"/>'+
+      '<circle class="pp" cx="-11" cy="-5" r="3.8" fill="#231433"/><circle class="pp" cx="11" cy="-5" r="3.8" fill="#231433"/>'+
+      '<path d="M-12 9Q0 21 12 9" fill="none"/><circle class="ns" cx="-21" cy="7" r="4.5" fill="#FF8FA8"/><circle class="ns" cx="21" cy="7" r="4.5" fill="#FF8FA8"/></svg>';
+    var pp=[].slice.call($('mascot').querySelectorAll('.pp'));
+    if(!reduce)document.addEventListener('pointermove',function(e){
+      var r=$('mascot').getBoundingClientRect(),dx=e.clientX-(r.left+r.width/2),dy=e.clientY-(r.top+r.height/2),d=Math.hypot(dx,dy)||1,m=Math.min(4,d/40);
+      pp.forEach(function(p){p.style.transform='translate('+(dx/d*m).toFixed(2)+'px,'+(dy/d*m).toFixed(2)+'px)'});
+    });
+    var SAY=['Hi, I’m Sunny. I live on Anvi’s website.','Anvi is a UX and UI designer who also builds her own sites in code.','She is looking for an internship, so take a look around.','Scroll down to find her projects in a little book.','Try moving your mouse over the big heading. The letters move.'];
+    var si=0,typer,auto,dots=$('sayDots');
+    SAY.forEach(function(_,j){var b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Message '+(j+1));b.addEventListener('click',function(){stop();say(j)});dots.appendChild(b)});
+    function say(i){
+      si=(i+SAY.length)%SAY.length;clearInterval(typer);
+      var t=SAY[si],n=0,el=$('sayText');$('sayFull').textContent=t;
+      if(reduce){el.textContent=t}else{el.textContent='';typer=setInterval(function(){n++;el.textContent=t.slice(0,n);if(n>=t.length)clearInterval(typer)},22)}
+      [].slice.call(dots.children).forEach(function(d,j){d.setAttribute('aria-current',String(j===si))});
+      $('sayN').textContent=(si+1)+' of '+SAY.length;
+    }
+    function stop(){clearInterval(auto)}
+    $('sayNext').addEventListener('click',function(){stop();say(si+1)});
+    $('mascot').addEventListener('click',function(){stop();var m=this;m.classList.remove('hop');void m.offsetWidth;m.classList.add('hop');say(si+1)});
+    say(0);
+    if(!reduce)auto=setInterval(function(){say(si+1)},8000);
+  })();
 
   /* Router: #home, #about-me, #projects, #contact */
   var vh=$('view-home'),va=$('view-about');

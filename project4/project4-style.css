@@ -1,0 +1,811 @@
+/* ==========================================================================
+   Project 4 — Photo Booth Studio case study styles
+   Layout concept: Anvi's case-study format (sticky header, progress bar,
+   hero with a playable stage, side nav, card sections), painted in the
+   deck's oxblood and cream.
+
+   Contents
+   1.  Tokens & themes
+   2.  Base & typography
+   3.  Header & progress bar
+   4.  Hero & buttons
+   5.  Playable stage (photo strip and frame colours)
+   6.  Case-study layout & side nav
+   7.  Cards, bands & figures
+   8.  Research references, tabs & pills
+   9.  Lightbox
+   10. Previous project, footer & header name link
+   11. Responsive & reduced motion
+   ========================================================================== */
+
+
+/* 1. Tokens & themes
+   ========================================================================== */
+:root {
+  --bg: #f6ece0;
+  --ink: #2a0606;
+  --mut: #7a5550;
+  --card: #fffaf3;
+  --line: #2a060626;
+  --acc: #9e1b1b;
+  --on: #ffffff;
+  --hi: #ffb4a8;
+  --deep: #3b0606;
+  --deepink: #f6ece0;
+
+  --d: 'Montserrat', 'Arial Black', system-ui, sans-serif;
+  --b: 'Source Sans 3', 'Segoe UI', system-ui, -apple-system, sans-serif;
+
+  --gut: max(clamp(18px, 5vw, 56px), env(safe-area-inset-left, 0px));
+  --gutr: max(clamp(18px, 5vw, 56px), env(safe-area-inset-right, 0px));
+
+  /* photo strip frame (changed by the colour swatches) */
+  --frame: #141638;
+  --frame-ink: #f6ece0;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #1f0404;
+    --ink: #f6ece0;
+    --mut: #cdaea6;
+    --card: #330909;
+    --line: #f6ece033;
+    --acc: #ff8f85;
+    --on: #1f0404;
+    --deep: #4a0808;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #1f0404;
+  --ink: #f6ece0;
+  --mut: #cdaea6;
+  --card: #330909;
+  --line: #f6ece033;
+  --acc: #ff8f85;
+  --on: #1f0404;
+  --deep: #4a0808;
+  color-scheme: dark;
+}
+
+
+/* 2. Base & typography
+   ========================================================================== */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 76px);
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 18px / 1.6 var(--b);
+}
+
+/* fills the notch area on phones */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0 0 auto;
+  height: env(safe-area-inset-top, 0px);
+  background: var(--bg);
+  z-index: 60;
+}
+
+:focus-visible {
+  outline: 3px solid var(--acc);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+a {
+  color: var(--acc);
+  text-underline-offset: 3px;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.wrap {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 var(--gutr) 0 var(--gut);
+}
+
+.eb {
+  font: 700 12px var(--b);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--acc);
+  margin: 0 0 8px;
+}
+
+h1 {
+  font: 900 clamp(42px, 7vw, 92px) / 0.98 var(--d);
+  letter-spacing: -0.03em;
+  margin: 0 0 18px;
+  text-transform: uppercase;
+}
+
+h1 em {
+  font-style: normal;
+  color: transparent;
+  -webkit-text-stroke: 2px var(--ink);
+  display: block;
+}
+
+h2 {
+  font: 800 clamp(28px, 4.4vw, 48px) / 1.06 var(--d);
+  letter-spacing: -0.025em;
+  margin: 0 0 16px;
+  text-wrap: balance;
+}
+
+h3 {
+  font: 800 20px / 1.25 var(--d);
+  margin: 36px 0 8px;
+}
+
+p,
+li {
+  max-width: 690px;
+}
+
+.lead {
+  font-size: clamp(19px, 2vw, 23px);
+  color: var(--mut);
+  max-width: 520px;
+}
+
+
+/* 3. Header & progress bar
+   ========================================================================== */
+#pg {
+  position: fixed;
+  left: 0;
+  top: env(safe-area-inset-top, 0px);
+  height: 3px;
+  width: 0;
+  background: var(--acc);
+  z-index: 70;
+}
+
+header {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 50;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 12px var(--gutr) 12px var(--gut);
+  background: var(--bg);
+  border-bottom: 1.5px solid var(--line);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+header b {
+  font: 800 18px var(--d);
+}
+
+/* theme toggle */
+#th {
+  all: unset;
+  cursor: pointer;
+  padding: 4px 10px;
+  border: 1.5px solid var(--ink);
+  border-radius: 99px;
+}
+
+
+/* 4. Hero & buttons
+   ========================================================================== */
+.hero {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 34px;
+  align-items: center;
+  padding: 6vh 0 3vh;
+}
+
+.hs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 12px;
+  margin: 28px 0 4px;
+}
+
+.hs div {
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: var(--deep);
+  color: var(--deepink);
+}
+
+.hs b {
+  display: block;
+  font: 900 34px / 1 var(--d);
+  color: var(--hi);
+}
+
+.hs small {
+  font-size: 14px;
+  opacity: 0.9;
+  display: block;
+  margin-top: 4px;
+  line-height: 1.3;
+}
+
+.cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  min-height: 46px;
+  padding: 8px 20px;
+  border: 2px solid var(--ink);
+  border-radius: 12px;
+  background: var(--acc);
+  color: var(--on);
+  font-weight: 700;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.btn.o {
+  background: transparent;
+  color: var(--ink);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 18px;
+  margin: 26px 0 56px;
+  padding: 22px 0;
+  border-block: 2px solid var(--ink);
+}
+
+.meta small {
+  display: block;
+  font: 700 12px var(--b);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--mut);
+}
+
+
+/* 5. Playable stage: photo strip and frame colours
+   ========================================================================== */
+.stage {
+  position: relative;
+  overflow: hidden;
+  color: var(--deepink);
+  border-radius: 28px;
+  padding: 34px 18px 22px;
+  border: 2px solid var(--ink);
+  display: grid;
+  justify-items: center;
+  gap: 20px;
+  min-width: 0;
+  background:
+    radial-gradient(60% 45% at 50% 30%, rgba(255, 150, 120, 0.28), transparent 70%),
+    radial-gradient(90% 60% at 50% 110%, rgba(158, 27, 27, 0.55), transparent 70%),
+    linear-gradient(160deg, #4a0808, #2a0505 60%, #1c0303);
+  box-shadow:
+    0 30px 60px -30px rgba(42, 6, 6, 0.8),
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.15);
+}
+
+/* dotted backdrop */
+.stage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.14) 1px, transparent 1.4px);
+  background-size: 22px 22px;
+}
+
+.strip {
+  --frame: #141638;
+  --frame-ink: #f6ece0;
+  position: relative;
+  z-index: 1;
+  width: min(12.5rem, 70%);
+  background: var(--frame);
+  padding: 0.7rem 0.7rem 2.7rem;
+  display: grid;
+  gap: 0.6rem;
+  border-radius: 4px;
+  transform: rotate(3deg);
+  box-shadow:
+    0 26px 40px -10px rgba(0, 0, 0, 0.6),
+    0 0 0 1px rgba(255, 255, 255, 0.12),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+  transition:
+    background-color 0.25s,
+    transform 0.35s cubic-bezier(0.3, 1.5, 0.5, 1),
+    outline-color 0.2s;
+  outline: 3px dashed transparent;
+  outline-offset: 8px;
+}
+
+/* silver star clip */
+.strip::before {
+  content: "";
+  position: absolute;
+  left: -1.1rem;
+  top: -1.1rem;
+  width: 2.6rem;
+  height: 2.6rem;
+  z-index: 2;
+  background: linear-gradient(135deg, #fff, #9aa0ad 45%, #e8eaf0);
+  clip-path: polygon(50% 0, 62% 36%, 100% 38%, 70% 60%, 80% 100%, 50% 76%, 20% 100%, 30% 60%, 0 38%, 38% 36%);
+  filter: drop-shadow(0 3px 4px rgba(0, 0, 0, 0.4));
+}
+
+/* glossy sheen */
+.strip::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(115deg, rgba(255, 255, 255, 0.16), transparent 35%);
+}
+
+.strip:hover {
+  transform: rotate(1deg) translateY(-4px);
+}
+
+/* while a colour is being dragged over the strip */
+.strip.over {
+  outline-color: var(--deepink);
+  transform: rotate(0) scale(1.04);
+}
+
+.strip img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-radius: 2px;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.2);
+}
+
+.strip .tag {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0.8rem;
+  z-index: 1;
+  text-align: center;
+  font: 800 11px var(--d);
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--frame-ink);
+  transition: color 0.25s;
+}
+
+/* frame colour swatches */
+.swatches {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(9, 1.9rem);
+  gap: 0.4rem;
+  justify-content: center;
+  padding: 10px 14px;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(6px);
+}
+
+.swb {
+  width: 1.9rem;
+  height: 1.9rem;
+  border-radius: 50%;
+  border: 2px solid rgba(246, 236, 224, 0.6);
+  background: var(--c);
+  padding: 0;
+  cursor: grab;
+  transition: transform 0.15s;
+}
+
+.swb:hover {
+  transform: scale(1.15);
+}
+
+.swb[aria-pressed="true"] {
+  border-color: #f6ece0;
+  box-shadow:
+    0 0 0 3px var(--deep),
+    0 0 0 5px #f6ece0;
+}
+
+.swb:active {
+  cursor: grabbing;
+}
+
+.swb:focus-visible {
+  outline: 3px solid #fff;
+}
+
+.stage .note {
+  position: relative;
+  z-index: 1;
+  font-size: 14px;
+  opacity: 0.92;
+  text-align: center;
+  max-width: 19rem;
+  margin: 0;
+}
+
+
+/* 6. Case-study layout & side nav
+   ========================================================================== */
+.cs {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 48px;
+}
+
+.cs > div {
+  min-width: 0;
+}
+
+.side {
+  position: sticky;
+  top: calc(env(safe-area-inset-top, 0px) + 84px);
+  align-self: start;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 15px;
+}
+
+.side button {
+  all: unset;
+  cursor: pointer;
+  padding: 5px 0 5px 12px;
+  border-left: 3px solid var(--line);
+  color: var(--mut);
+}
+
+.side button.on {
+  border-color: var(--acc);
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.side button:focus-visible {
+  outline: 3px solid var(--acc);
+}
+
+.sx {
+  margin-bottom: 100px;
+}
+
+
+/* 7. Cards, bands & figures
+   ========================================================================== */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  gap: 16px;
+  margin: 20px 0;
+}
+
+.g2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.card {
+  padding: 18px 22px;
+  border: 2px solid var(--ink);
+  border-radius: 20px;
+  background: var(--card);
+  min-width: 0;
+}
+
+.card b {
+  display: block;
+  font: 800 17px / 1.3 var(--d);
+  margin-bottom: 6px;
+}
+
+.card p {
+  margin: 0;
+  font-size: 17px;
+  color: var(--mut);
+}
+
+.card p.ink {
+  color: var(--ink);
+  font-size: 19px;
+}
+
+.num {
+  font: 900 36px / 1 var(--d);
+  color: var(--acc);
+  margin-bottom: 8px;
+}
+
+.band {
+  background: var(--deep);
+  color: var(--deepink);
+  border: 2px solid var(--ink);
+  border-radius: 22px;
+  padding: 26px;
+  margin: 24px 0;
+}
+
+.band .eb {
+  color: var(--hi);
+}
+
+.band p {
+  max-width: 690px;
+}
+
+.fig {
+  margin: 22px 0;
+}
+
+.fig img {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  border: 2px solid var(--ink);
+  cursor: zoom-in;
+  background: #fff;
+}
+
+.fig figcaption {
+  font-size: 14px;
+  color: var(--mut);
+  margin-top: 6px;
+}
+
+
+/* 8. Research references, tabs & pills
+   ========================================================================== */
+.refs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin: 20px 0;
+}
+
+.refs .fig {
+  margin: 0 0 10px;
+}
+
+.refs h4 {
+  font: 800 18px var(--d);
+  margin: 0 0 4px;
+}
+
+.refs p {
+  font-size: 16px;
+  color: var(--mut);
+  margin: 0;
+}
+
+.refs .n {
+  font: 700 12px var(--b);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--acc);
+}
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 14px 0;
+}
+
+.tabs button {
+  all: unset;
+  cursor: pointer;
+  padding: 7px 14px;
+  border: 2px solid var(--ink);
+  border-radius: 99px;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.tabs button.on {
+  background: var(--ink);
+  color: var(--bg);
+}
+
+.tabs button:focus-visible {
+  outline: 3px solid var(--acc);
+  outline-offset: 2px;
+}
+
+.pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 18px 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pills li {
+  padding: 3px 14px;
+  border: 1.5px solid var(--ink);
+  border-radius: 99px;
+  font-size: 15px;
+}
+
+.pills li.open {
+  background: var(--hi);
+  color: #2a0606;
+  font-weight: 700;
+}
+
+
+/* 9. Lightbox
+   ========================================================================== */
+#lb {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: #000d;
+  display: none;
+  place-items: center;
+  padding: 20px;
+  cursor: zoom-out;
+}
+
+#lb.on {
+  display: grid;
+}
+
+#lb img {
+  max-height: 92vh;
+  max-width: 96vw;
+  border-radius: 10px;
+  background: #fff;
+}
+
+
+/* 10. Previous project, footer & header name link
+   ========================================================================== */
+/* name in the header links to the portfolio landing page */
+.brand {
+  color: inherit;
+  text-decoration: none;
+}
+
+.brand:hover {
+  opacity: 0.7;
+}
+
+/* small previous-project link */
+.pager {
+  display: flex;
+  justify-content: flex-start;
+  margin: 0 0 32px;
+}
+
+.pager a {
+  display: block;
+  padding: 10px 14px;
+  border: 1.5px solid var(--ink);
+  border-radius: 12px;
+  background: var(--card);
+  color: var(--ink);
+  text-decoration: none;
+  text-align: left;
+  transition: transform 0.15s;
+}
+
+.pager a:hover {
+  transform: translateY(-2px);
+}
+
+.pager small {
+  display: block;
+  margin-bottom: 2px;
+  font: 700 10px var(--b);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--acc);
+}
+
+.pager b {
+  font: 800 15px / 1.2 var(--d);
+}
+
+footer {
+  padding: 50px 0 90px;
+  border-top: 2px solid var(--ink);
+  text-align: center;
+}
+
+footer b {
+  font: 900 clamp(32px, 5.5vw, 60px) / 1 var(--d);
+}
+
+footer p {
+  margin: 12px auto;
+  color: var(--mut);
+}
+
+
+/* 11. Responsive & reduced motion
+   ========================================================================== */
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .cs {
+    display: block;
+  }
+
+  .side {
+    display: none;
+  }
+
+  .refs {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .g2 {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .swatches {
+    grid-template-columns: repeat(5, 2.4rem);
+    border-radius: 22px;
+  }
+
+  .swb {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+
+  h1 em {
+    -webkit-text-stroke-width: 1.5px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
